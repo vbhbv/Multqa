@@ -1,5 +1,5 @@
 //
-// مجلة الملتقى - التفاعلية الفخمة (17 وظيفة)
+// مجلة الملتقى - التفاعلية الفخمة (18 وظيفة)
 // ** تم تحديث الكود ليتناسب مع التصميم الجديد V2 **
 //
 
@@ -70,9 +70,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // تحديث أيقونة الوضع الليلي (Dark Mode Icon)
         const icon = themeToggle ? themeToggle.querySelector('i') : null;
         if (icon) {
-            // (هذا يعتمد على أن themeToggle هو زر يحتوي أيقونة)
-            // إذا كان themeToggle هو checkbox، قد تحتاج لتعديل هذا الجزء
-            // سأفترض أنه زر يغير محتواه
             icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
         }
         localStorage.setItem(localStorageKey, theme);
@@ -82,7 +79,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const initTheme = () => {
         const savedTheme = localStorage.getItem(localStorageKey);
         const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        // افتراض أن التبديل يتم عبر كلاس 'dark-mode-toggle' 
         applyTheme(savedTheme || (prefersDark ? 'dark' : 'light'));
     };
     initTheme();
@@ -117,13 +113,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const createCursorFollower = () => {
         const follower = document.createElement('div');
         follower.id = 'cursor-follower';
-        // يجب أن يتم إضافة تنسيقات CSS الخاصة بالـ cursor-follower في ملف style.css ليعمل هذا التأثير بشكل كامل
         follower.style.cssText = `
             position: fixed;
             width: 15px;
             height: 15px;
             border-radius: 50%;
-            background: var(--color-accent, #DA2C43); /* استخدام لون التمييز */
+            background: var(--color-accent, #DA2C43); 
             pointer-events: none;
             transition: transform 0.1s ease-out, opacity 0.3s;
             z-index: 9999;
@@ -147,8 +142,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 500);
         });
     };
-    // تشغيل تأثير مسار الماوس
-    // تأكد من إزالة هذا السطر إذا كنت لا تريد تفعيل هذا التأثير
     createCursorFollower(); 
 
     // ===================================================
@@ -157,7 +150,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.cta-button, .secondary-btn').forEach(button => {
         button.style.position = 'relative';
         button.style.overflow = 'hidden';
-        // يتطلب هذا وجود تنسيقات CSS في style.css لعمل تأثير الضوء (::after)
 
         button.addEventListener('mousemove', (e) => {
             const rect = button.getBoundingClientRect();
@@ -202,23 +194,19 @@ document.addEventListener('DOMContentLoaded', () => {
             const rect = e.target.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
-            // يتم تخفيف قيمة الدوران لمنع الانحراف المفرط
             e.target.style.transform = `perspective(1000px) rotateX(${(y - rect.height / 2) / 15}deg) rotateY(${-(x - rect.width / 2) / 15}deg)`;
         });
 
         button.addEventListener('mouseleave', (e) => {
-            // إعادته للوضع الأصلي عند الابتعاد
             e.target.style.transform = 'translateY(-3px) scale(1.03)'; 
         });
     });
 
     // ===================================================
-    // 16. تحريك زر الهامبرغر عند التحميل (إضفاء الهيبة)
-    // (تم تعديل الرقم لجعله 16)
+    // 16. تحريك زر الهامبرغر عند التحميل
     // ===================================================
     const animateHamburger = () => {
         if (hamburger) {
-            // يتطلب keyframes 'pulse' في CSS ليعمل
             hamburger.style.animation = 'pulse 1s 2';
             setTimeout(() => {
                  hamburger.style.animation = 'none';
@@ -229,13 +217,14 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // ===================================================
     // 17. وضع الشعار في شريط التنقل (Sticky Header functionality)
-    // (لم تكن موجودة في الكود السابق، أضفتها لتكملة الترقيم)
     // ===================================================
     const handleStickyHeader = () => {
-        if (window.scrollY > 100) {
-            header.classList.add('scrolled'); // يتطلب تنسيقات CSS لـ .header.scrolled
-        } else {
-            header.classList.remove('scrolled');
+        if (header) {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
         }
     };
     if (header) {
@@ -244,8 +233,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // ===================================================
-    // 18. شريط تليجرام الإعلاني (Telegram Banner) - الإضافة المطلوبة
-    // (يظهر مرة واحدة حتى يغلقه المستخدم)
+    // 18. شريط تليجرام الإعلاني (Telegram Banner) - الإضافة الجديدة
     // ===================================================
     const banner = document.getElementById('telegram-banner');
     const closeBannerBtn = document.getElementById('close-banner-btn');
@@ -255,7 +243,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function hideBanner() {
         if (banner) {
             banner.classList.remove('show');
-            // حفظ تفضيل المستخدم بالإغلاق
+            // حفظ تفضيل المستخدم بالإغلاق لمنع ظهوره مرة أخرى
             localStorage.setItem(bannerLocalStorageKey, 'true');
         }
     }
@@ -264,7 +252,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function showBanner() {
         // التحقق من وجود الشريط وعدم إغلاقه سابقًا
         if (banner && localStorage.getItem(bannerLocalStorageKey) !== 'true') {
-            // إظهار الشريط عبر إضافة الكلاس 'show' بعد فترة تأخير بسيطة لإضفاء تأثير جمالي
+            // إظهار الشريط عبر إضافة الكلاس 'show' بعد فترة تأخير بسيطة
             setTimeout(() => {
                  banner.classList.add('show');
             }, 500); 
