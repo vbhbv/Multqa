@@ -1,192 +1,381 @@
 /*
- * مجلة الملتقى الثقافي للكتاب - التصميم النهائي (V10)
- * **تم تصحيح طريقة استيراد الخطوط لضمان التطبيق الشامل.**
+ * مجلة الملتقى الثقافي - التصميم العالمي المثير (V2)
+ * خطوط: Aref Ruqaa (فخامة) و Cairo (وضوح)
+ * تصميم البطاقات: مائل (Skewed) وغير مطروق
  */
 
 /* ===================================================
-   1. الخطوط والمتغيرات الأساسية (إعادة استيراد الخطوط هنا)
+   1. الخطوط والمتغيرات الأساسية
    =================================================== */
-/* ********** هذا هو الحل: استيراد الخطوط بشكل صحيح وموثوق ********** */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;700&family=Reem+Kufi:wght@700&display=swap');
-
 :root {
-    /* الألوان الدافئة */
-    --color-primary: #008080;      /* تركوازي عميق */
-    --color-secondary: #FFD700;    /* ذهبي ساطع */
-    --color-accent: #E94F37;       /* ناري للتفاعل */
-    --color-background: #FAFAFA;   /* خلفية فاتحة */
-    --color-surface: #FFFFFF;      /* خلفية البطاقات */
-    --color-text-main: #3C4858;
-    --color-text-secondary: #6B7A8F;
-    --color-border: #E5E5E5;
+    /* الألوان الزاهية والدرامية */
+    --color-primary: #00A389;      /* زمردي عميق (خلفية فخمة) */
+    --color-secondary: #FFC300;    /* ذهبي ساطع (تمييز) */
+    --color-accent: #DA2C43;       /* مرجاني درامي (للتفاعل) */
+    --color-background: #F4F4F4;   /* خلفية فاتحة */
+    --color-surface: #FFFFFF;      /* خلفية البطاقات والسطح */
+    --color-text-main: #2C3E50;    /* كحلي غامق للقراءة */
+    --color-text-light: #F0F0F0;   /* للنصوص الفاتحة */
+    --color-border: #E0E0E0;
 
-    /* الخطوط - نستخدم أسماء الخطوط بعد استيرادها */
-    --font-logo: 'Reem Kufi', sans-serif;
-    --font-heading: 'Noto Naskh Arabic', serif;
-    --font-body: 'Noto Naskh Arabic', serif; 
+    /* الخطوط الفخمة */
+    --font-logo: 'Aref Ruqaa', serif; /* للعنوان والشعار الرئيسي */
+    --font-heading: 'Aref Ruqaa', serif; /* للعناوين */
+    --font-body: 'Cairo', sans-serif; /* للنصوص العادية */
 
-    /* الانتقال */
-    --transition-speed: 0.5s;
-    --menu-width: 300px;
+    /* الألوان الخاصة بالبطاقات الملونة */
+    --color-emerald-bg: #EAF7F7;
+    --color-emerald-main: #00A389;
+    --color-coral-bg: #FFF3F4;
+    --color-coral-main: #DA2C43;
+    --color-gold-bg: #FFFBEA;
+    --color-gold-main: #FFC300;
+
+    /* الانتقال والقياسات */
+    --transition-speed: 0.4s;
+    --menu-width: 320px;
 }
 
 /* ===================================================
-   2. الوضع الليلي (Dark Mode)
+   2. الوضع الليلي (Dark Mode) - درامي وفخم
    =================================================== */
-/* ... (هذا القسم يبقى كما هو) ... */
 body.dark-mode {
-    --color-primary: #4DC1C1;
+    --color-primary: #1ED7AA;
     --color-secondary: #FFEA80;
-    --color-accent: #FF6B52;
-    --color-background: #1A1A1A;
-    --color-surface: #262626;
-    --color-text-main: #F0F0F0;
-    --color-text-secondary: #B0B0B0;
-    --color-border: #444444;
+    --color-accent: #FF5A73;
+    --color-background: #121212; /* خلفية داكنة جداً */
+    --color-surface: #1E1E1E;
+    --color-text-main: #E0E0E0;
+    --color-text-light: #2C3E50;
+    --color-border: #333333;
+
+    --color-emerald-bg: #15332F;
+    --color-emerald-main: #1ED7AA;
+    --color-coral-bg: #3D1219;
+    --color-coral-main: #FF5A73;
+    --color-gold-bg: #3D3510;
+    --color-gold-main: #FFEA80;
 }
 
 /* ===================================================
-   3. الأنماط العامة وإعادة الضبط (تطبيق الخط على BODY)
+   3. الأنماط العامة وإعادة الضبط (تطبيق الخطوط)
    =================================================== */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
+a { text-decoration: none; color: inherit; }
 
 body {
-    /* ** هذا هو الإصلاح: تطبيق الخط لجميع النصوص ** */
     font-family: var(--font-body); 
     background-color: var(--color-background);
     color: var(--color-text-main);
-    line-height: 1.7;
+    line-height: 1.8;
     direction: rtl;
     transition: background-color var(--transition-speed), color var(--transition-speed);
 }
-/* التأكد من تطبيق الخط على الفقرات */
-p {
-    font-family: var(--font-body); 
-}
+.container { max-width: 1400px; margin: 0 auto; padding: 0 30px; }
 
-.container {
-    max-width: 1300px;
-    margin: 0 auto;
-    padding: 0 25px;
-}
-
-h1, h2, h3 {
+/* تطبيق الخطوط على جميع العناوين */
+h1, h2, h3, .section-title {
     font-family: var(--font-heading);
     color: var(--color-text-main);
     margin-bottom: 0.7em;
+    font-weight: 700;
+}
+.section-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-top: 60px;
+    margin-bottom: 50px;
+    color: var(--color-primary);
 }
 
 /* ===================================================
-   4. شريط التنقل (تطبيق الخط الخطاطي)
+   4. شريط التنقل (Header)
    =================================================== */
 .header {
     background-color: var(--color-surface);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
     padding: 15px 0;
     position: sticky;
     top: 0;
     z-index: 2000;
-    transition: all 0.4s ease;
 }
-.nav-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+.nav-content { display: flex; justify-content: space-between; align-items: center; }
+
 .logo a {
-    font-family: var(--font-logo); /* تطبيق خط Reem Kufi */
-    font-size: 2.2rem;
+    font-family: var(--font-logo);
+    font-size: 2.8rem; /* شعار كبير ومثير */
     color: var(--color-primary);
     font-weight: 700;
+    letter-spacing: 2px;
 }
-.logo span {
-    color: var(--color-secondary);
+.nav-icon {
+    background: none; border: none; cursor: pointer;
+    font-size: 1.5rem;
+    color: var(--color-text-main);
+    padding: 10px;
+    transition: color 0.3s;
 }
-
-/* ... (بقية الأنماط تبقى كما هي) ... */
 
 /* ===================================================
-   7. تصميم البطاقات الجديد (عصري وأنيق)
+   5. القائمة الجانبية (Sidebar Menu)
+   =================================================== */
+.sidebar {
+    right: calc(-1 * var(--menu-width));
+    width: var(--menu-width);
+    z-index: 3000;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.3);
+}
+.sidebar.open { right: 0; }
+.sidebar a {
+    padding: 15px 0;
+    border-bottom: 1px dashed var(--color-border);
+    width: 100%;
+    color: var(--color-text-main);
+    transition: color 0.3s, padding 0.3s;
+}
+.sidebar a:hover {
+    color: var(--color-primary);
+    padding-right: 10px;
+}
+
+/* ===================================================
+   6. القسم التعريفي (Cultural Stage) - مدهش
+   =================================================== */
+.cultural-stage {
+    min-height: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: var(--color-primary); /* خلفية لون الزمرد */
+    color: var(--color-text-light);
+    margin: 50px 0;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+.stage-content { max-width: 800px; padding: 40px; }
+.cultural-stage h1 {
+    font-family: var(--font-logo);
+    font-size: 4rem;
+    color: var(--color-secondary); /* العنوان بالذهبي */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+.cultural-stage p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 30px;
+}
+
+/* زر الدعوة للعمل (CTA Button) */
+.cta-button {
+    display: inline-block;
+    padding: 15px 35px;
+    background-color: var(--color-secondary);
+    color: var(--color-text-main);
+    font-weight: 700;
+    border-radius: 50px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    font-size: 1.1rem;
+}
+.cta-button:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 10px 20px rgba(255, 195, 0, 0.4);
+}
+
+/* ===================================================
+   7. تصميم البطاقات (Skewed & Dynamic Cards) - ملونة ورائعة
    =================================================== */
 .article-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 35px;
-    padding: 50px 0;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+    padding: 50px 0 80px;
 }
-
 .card {
     background-color: var(--color-surface);
-    border-radius: 12px; 
-    transition: transform 0.4s ease, box-shadow 0.4s ease, border 0.4s;
-    border: 1px solid var(--color-border); 
+    border-radius: 8px; /* حواف حادة قليلاً */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); /* ظل واضح */
+    transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.3s;
+    overflow: hidden;
+    position: relative;
     
-    /* ظل داخلي للتمييز (الجانب الأيسر بالتركوازي) */
-    box-shadow: inset 5px 0 0 0 var(--color-primary), 0 8px 30px rgba(0, 0, 0, 0.05); 
-
-    transform: translateX(30px);
+    /* الشكل المائل (Skewed Look) */
+    transform: rotate(1deg) translateY(30px); /* ميلان بسيط + تأثير الظهور */
     opacity: 0;
 }
 
+/* عكس الميلان لبطاقات معينة لإضافة التباين */
+.card:nth-child(even) {
+    transform: rotate(-1deg) translateY(30px);
+}
+.card:nth-child(2n+1) { /* فردي */
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.1);
+}
+.card:nth-child(2n) { /* زوجي */
+    box-shadow: -10px 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+
 .card:hover {
-    transform: translateY(-5px); /* ارتفاع بسيط لأعلى */
-    box-shadow: inset 8px 0 0 0 var(--color-primary), 0 15px 40px rgba(0, 0, 0, 0.15); /* ظل أقوى عند التمرير */
+    /* تعديل الميلان وجعله مستقيماً عند التفاعل */
+    transform: rotate(0deg) scale(1.02); 
+    filter: brightness(1.05); /* إضاءة خفيفة عند التمرير */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
-.card-content {
-    padding: 30px; 
+.card-content { padding: 30px; }
+
+/* شريط التمييز اللوني المزدوج */
+.card:before, .card:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    height: 8px;
+    width: 50%;
+}
+.card:before { left: 0; }
+.card:after { right: 0; }
+
+/* تطبيق الألوان المزدوجة على البطاقات */
+.card.color-emerald:before { background-color: var(--color-emerald-main); }
+.card.color-emerald:after { background-color: var(--color-secondary); } /* زمردي + ذهبي */
+
+.card.color-coral:before { background-color: var(--color-coral-main); }
+.card.color-coral:after { background-color: var(--color-primary); } /* مرجاني + زمردي */
+
+.card.color-gold:before { background-color: var(--color-gold-main); }
+.card.color-gold:after { background-color: var(--color-accent); } /* ذهبي + مرجاني */
+
+
+.card-category {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--color-text-secondary); /* لون ثانوي */
+    display: block;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed var(--color-border);
 }
 
-/* بطاقة الفهرس (المميزة) */
-.card:last-child {
-    box-shadow: inset 5px 0 0 0 var(--color-secondary), 0 8px 30px rgba(0, 0, 0, 0.05); 
-}
-.card:last-child:hover {
-    box-shadow: inset 8px 0 0 0 var(--color-secondary), 0 15px 40px rgba(0, 0, 0, 0.15);
-}
-
-/* الأزرار (القراءة/الدعوة للعمل) - تبقى كما هي بتوحيد الخط */
-.btn-read, .cta-btn {
-    font-family: var(--font-body); /* توحيد الخط */
+/* الروابط الداخلية (اقرأ المقال) */
+.read-link {
     display: inline-block;
-    position: relative;
-    overflow: hidden;
-    padding: 10px 20px;
-    background-color: var(--color-accent);
+    margin-top: 20px;
+    color: var(--color-accent);
+    font-weight: 700;
+    border-bottom: 2px solid var(--color-accent); /* خط تحتي واضح */
+    padding-bottom: 3px;
+    transition: color 0.3s, border-color 0.3s;
+}
+.read-link:hover {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+/* CTA Secondary */
+.cta-secondary {
+    text-align: center;
+    padding: 40px;
+    border: 1px dashed var(--color-border);
+    border-radius: 10px;
+    margin-bottom: 60px;
+    background-color: var(--color-surface);
+}
+.cta-secondary p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+.secondary-btn {
+    display: inline-block;
+    padding: 10px 25px;
+    background-color: var(--color-primary);
     color: white;
     border-radius: 5px;
-    font-weight: 700;
-    transition: background-color 0.3s, transform 0.3s;
+    font-weight: 400;
+    transition: background-color 0.3s;
+}
+.secondary-btn:hover { background-color: var(--color-accent); }
+
+/* ===================================================
+   8. التذييل (Footer) - فخم
+   =================================================== */
+.footer {
+    background-color: var(--color-text-main); /* لون داكن للتذييل */
+    color: var(--color-text-light);
+    padding: 40px 0 10px;
+    font-size: 0.9rem;
+}
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-bottom: 30px;
+    border-bottom: 1px solid var(--color-border);
+}
+.footer-logo {
+    font-family: var(--font-logo);
+    font-size: 2rem;
+    color: var(--color-secondary);
+}
+.footer-links a {
+    margin-left: 20px;
+    transition: color 0.3s;
+}
+.footer-links a:hover {
+    color: var(--color-primary);
+}
+.social-icons a {
+    font-size: 1.4rem;
+    margin-right: 15px;
+    transition: color 0.3s;
+}
+.social-icons a:hover {
+    color: var(--color-secondary);
+}
+.footer-bottom {
+    text-align: center;
+    padding-top: 15px;
 }
 
 /* ===================================================
-   8. تأثيرات الحركة والـ JS
+   9. تأثيرات الحركة والـ JS (Scroll Reveal)
    =================================================== */
 .visible {
     opacity: 1;
-    transform: translateX(0);
+    transform: rotate(0deg) translateY(0);
 }
 
-/* ... (بقية الأنماط تبقى كما هي) ... */
-
 /* ===================================================
-   9. التصميم المتجاوب (Mobile Fixes)
+   10. التصميم المتجاوب
    =================================================== */
-@media (max-width: 600px) {
-    /* ... (بقية خصائص التجاوبية تبقى كما هي) ... */
+@media (max-width: 800px) {
+    .cultural-stage h1 { font-size: 3rem; }
+    .footer-content { 
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+    .footer-links { margin: 10px 0; }
+    .footer-links a { margin: 0 10px; }
+}
+
+@media (max-width: 480px) {
+    .cultural-stage h1 { font-size: 2.2rem; }
+    .article-grid { grid-template-columns: 1fr; }
     
-    /* تغيير حركة البطاقات لتكون عمودية فقط على الهواتف */
-    .card {
-        transform: translateY(20px);
-        transition: transform 0.4s ease, box-shadow 0.4s ease;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05); 
+    /* إلغاء الميلان على الأجهزة الصغيرة لسهولة العرض */
+    .card, .card:nth-child(even) {
+        transform: rotate(0deg) translateY(20px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     }
     .card:hover {
         transform: translateY(-5px) scale(1.02);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     }
 }
