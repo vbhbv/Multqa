@@ -1,5 +1,6 @@
 //
-// مجلة الملتقى - التفاعلية الفائقة والجمالية المتقدمة (16 وظيفة)
+// مجلة الملتقى - التفاعلية الفائقة والجمالية المتقدمة (17 وظيفة)
+// **تم إزالة الوظيفة المسببة لمشكلة الشاشة البيضاء (Fade-in Body).**
 //
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -9,64 +10,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.getElementById('hamburger-btn');
     const closeBtn = document.getElementById('close-menu-btn');
     const themeToggle = document.getElementById('dark-mode-toggle');
-    const heroSection = document.querySelector('.hero-section');
+    const header = document.querySelector('.header');
     const localStorageKey = 'multaqa_theme_v5';
 
     // ===================================================
-    // 1-6. وظائف أساسية (إعادة استخدام من التصميم السابق)
+    // 1. أداة تحسين الأداء: Scroll Throttling
     // ===================================================
-    
-    // 1. وظيفة فتح/إغلاق القائمة الجانبية
-    const toggleSidebar = () => {
-        sidebar.classList.toggle('open');
-        // 2. منع التمرير عند فتح القائمة (UX Function)
-        body.style.overflow = sidebar.classList.contains('open') ? 'hidden' : 'auto';
-    };
-    if (hamburger && closeBtn) {
-        hamburger.addEventListener('click', toggleSidebar);
-        closeBtn.addEventListener('click', toggleSidebar);
-    }
-
-    // 3. إغلاق القائمة بالضغط على ESC
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && sidebar.classList.contains('open')) {
-            toggleSidebar();
-        }
-    });
-
-    // 4. تطبيق الوضع الليلي (Dark Mode Logic)
-    const applyTheme = (theme) => {
-        if (theme === 'dark') {
-            body.classList.add('dark-mode');
-            if (themeToggle) themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-            localStorage.setItem(localStorageKey, 'dark');
-        } else {
-            body.classList.remove('dark-mode');
-            if (themeToggle) themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-            localStorage.setItem(localStorageKey, 'light');
-        }
-    };
-    // 5. تهيئة الثيم عند التحميل
-    const initTheme = () => {
-        const savedTheme = localStorage.getItem(localStorageKey);
-        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        applyTheme(savedTheme || (prefersDark ? 'dark' : 'light'));
-    };
-    initTheme();
-
-    // 6. مستمع النقر لزر الوضع الليلي
-    if (themeToggle) {
-        themeToggle.addEventListener('click', () => {
-            const isDarkMode = body.classList.contains('dark-mode');
-            applyTheme(isDarkMode ? 'light' : 'dark');
-        });
-    }
-
-
-    // ===================================================
-    // 7. تحسين الأداء: Scroll Throttling
-    // ===================================================
-    // يضمن عدم تشغيل وظائف التمرير (مثل scrollReveal) بشكل مفرط
     const throttle = (func, limit) => {
         let inThrottle;
         return function() {
@@ -81,7 +30,65 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // ===================================================
-    // 8. تأثير التحريك عند التمرير (Scroll Reveal)
+    // 2. وظيفة فتح/إغلاق القائمة الجانبية (Hamburger Menu)
+    // ===================================================
+    const toggleSidebar = () => {
+        const isOpen = sidebar.classList.toggle('open');
+        // 3. منع التمرير عند فتح القائمة
+        body.style.overflow = isOpen ? 'hidden' : 'auto';
+    };
+
+    // 4. مستمعات النقر لفتح وإغلاق القائمة
+    if (hamburger && closeBtn) {
+        hamburger.addEventListener('click', toggleSidebar);
+        closeBtn.addEventListener('click', toggleSidebar);
+    }
+    
+    // 5. إغلاق القائمة بالنقر خارجها (Event Delegation)
+    document.addEventListener('click', (e) => {
+        if (sidebar.classList.contains('open') && 
+            !sidebar.contains(e.target) && 
+            !hamburger.contains(e.target) && 
+            e.target !== themeToggle) {
+            toggleSidebar();
+        }
+    });
+
+    // 6. إغلاق القائمة بالضغط على مفتاح ESC (Accessibility)
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && sidebar.classList.contains('open')) {
+            toggleSidebar();
+        }
+    });
+
+    // ===================================================
+    // 7. تطبيق الوضع الليلي (Dark Mode Logic)
+    // ===================================================
+    const applyTheme = (theme) => {
+        const isDark = (theme === 'dark');
+        body.classList.toggle('dark-mode', isDark);
+        if (themeToggle) themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        localStorage.setItem(localStorageKey, theme);
+    };
+    
+    // 8. تهيئة الثيم عند التحميل
+    const initTheme = () => {
+        const savedTheme = localStorage.getItem(localStorageKey);
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        applyTheme(savedTheme || (prefersDark ? 'dark' : 'light'));
+    };
+    initTheme();
+
+    // 9. مستمع النقر لزر الوضع الليلي
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const isDarkMode = body.classList.contains('dark-mode');
+            applyTheme(isDarkMode ? 'light' : 'dark');
+        });
+    }
+
+    // ===================================================
+    // 10. تأثير التحريك عند التمرير (Scroll Reveal)
     // ===================================================
     const scrollReveal = () => {
         const cards = document.querySelectorAll('.card');
@@ -91,60 +98,54 @@ document.addEventListener('DOMContentLoaded', () => {
             if (card.getBoundingClientRect().top < triggerBottom) {
                 setTimeout(() => {
                     card.classList.add('visible');
-                }, index * 100); // تأخير أبسط وأسرع
+                }, index * 100);
             }
         });
     };
-    window.addEventListener('scroll', throttle(scrollReveal, 100)); // استخدام Throttling هنا
+    window.addEventListener('scroll', throttle(scrollReveal, 100));
     scrollReveal();
 
-
     // ===================================================
-    // 9. تأثير Cursor Trail (مسار الماوس الجمالي)
+    // 11. تأثير Cursor Trail (مسار الماوس الجمالي)
     // ===================================================
     const createCursorFollower = () => {
         const follower = document.createElement('div');
+        follower.id = 'cursor-follower';
         follower.style.cssText = `
             position: fixed;
             width: 15px;
             height: 15px;
             border-radius: 50%;
-            background: ${getComputedStyle(document.documentElement).getPropertyValue('--color-accent')}; /* لون ذهبي */
+            background: var(--color-accent);
             pointer-events: none;
-            transition: transform 0.1s ease-out;
+            transition: transform 0.1s ease-out, opacity 0.3s;
             z-index: 9999;
             opacity: 0.6;
-            mix-blend-mode: soft-light; /* تأثير جمالي في المزج */
+            mix-blend-mode: soft-light;
             transform: translate(-50%, -50%);
         `;
         body.appendChild(follower);
 
         document.addEventListener('mousemove', (e) => {
-            // تحديث الموقع بسلاسة
             follower.style.left = `${e.clientX}px`;
             follower.style.top = `${e.clientY}px`;
+        });
+        
+        let timeout;
+        document.addEventListener('mousemove', () => {
+            follower.style.opacity = '0.6';
+            clearTimeout(timeout);
+            timeout = setTimeout(() => {
+                follower.style.opacity = '0';
+            }, 500);
         });
     };
     createCursorFollower();
 
     // ===================================================
-    // 10. تأثير Parallax الخفيف على قسم البطل
+    // 12. تأثير الضوء الخفيف على الأزرار (Aura Effect)
     // ===================================================
-    const heroParallax = () => {
-        if (!heroSection) return;
-        const scrolled = window.scrollY;
-        // تحريك الخلفية بـ 30% من التمرير
-        heroSection.style.transform = `translateY(${scrolled * 0.3}px)`;
-        // تخفيف شفافية النص داخل الهيرو قليلاً
-        heroSection.style.opacity = 1 - (scrolled / 500); 
-    };
-    window.addEventListener('scroll', throttle(heroParallax, 50));
-    heroParallax(); // لتطبيقه عند التحميل
-
-    // ===================================================
-    // 11. تأثير الضوء الخفيف على الأزرار (Aura Effect)
-    // ===================================================
-    document.querySelectorAll('.btn-read, .btn-action').forEach(button => {
+    document.querySelectorAll('.btn-read, .cta-btn').forEach(button => {
         button.style.position = 'relative';
         button.style.overflow = 'hidden';
 
@@ -152,82 +153,41 @@ document.addEventListener('DOMContentLoaded', () => {
             const rect = button.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
-
-            // إزالة أي تأثير سابق
-            button.style.removeProperty('--x');
-            button.style.removeProperty('--y');
-
-            // تطبيق متغيرات CSS لتحريك الضوء
+            
             button.style.setProperty('--x', `${x}px`);
             button.style.setProperty('--y', `${y}px`);
         });
-
-        // إضافة CSS اللازم لتأثير الضوء (Light Shine)
-        const style = document.createElement('style');
-        style.innerHTML = `
-            .btn-read:after {
-                content: '';
-                position: absolute;
-                top: var(--y, 50%);
-                left: var(--x, 50%);
-                width: 50px;
-                height: 50px;
-                background: rgba(255, 255, 255, 0.4);
-                border-radius: 50%;
-                transform: translate(-50%, -50%) scale(0);
-                transition: transform 0.1s;
-            }
-            .btn-read:hover:after {
-                transform: translate(-50%, -50%) scale(5);
-                opacity: 0;
-                transition: transform 0.5s ease-out, opacity 0.5s;
-            }
-        `;
-        document.head.appendChild(style);
     });
 
     // ===================================================
-    // 12. Dynamic Page Title (لزيادة الهيبة عند عدم التركيز)
+    // 13. Dynamic Page Title (لزيادة الهيبة)
     // ===================================================
     let originalTitle = document.title;
     const idleTitle = "📜 لا تفتك مقالات الملتقى!";
 
     document.addEventListener('visibilitychange', () => {
-        if (document.hidden) {
-            document.title = idleTitle;
-        } else {
-            document.title = originalTitle;
-        }
+        document.title = document.hidden ? idleTitle : originalTitle;
     });
 
     // ===================================================
-    // 13. Smooth Scroll لجميع الروابط الداخلية
+    // 14. Smooth Scroll لجميع الروابط الداخلية
     // ===================================================
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
+            const targetElement = document.querySelector(this.getAttribute('href'));
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
         });
     });
 
     // ===================================================
-    // 14. إظهار/إخفاء رسالة حقوق النشر في الفوتر عند التمرير (UX)
-    // ===================================================
-    const footerTextFade = () => {
-        const footer = document.querySelector('.footer');
-        // إظهار الفوتر بالكامل عندما يصبح مرئياً في أسفل الشاشة
-        if (window.scrollY > document.body.scrollHeight - window.innerHeight - 100) {
-            footer.style.opacity = '1';
-        } else {
-            footer.style.opacity = '0.7';
-        }
-    };
-    window.addEventListener('scroll', throttle(footerTextFade, 100));
-
     // 15. تحريك زر 'اقرأ الآن' عند التمرير بالماوس (Tilt Effect)
-    document.querySelectorAll('.btn-read, .btn-action').forEach(button => {
+    // ===================================================
+    document.querySelectorAll('.btn-read, .cta-btn').forEach(button => {
         button.addEventListener('mousemove', (e) => {
             const rect = e.target.getBoundingClientRect();
             const x = e.clientX - rect.left;
@@ -240,17 +200,33 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 16. تحريك عنصر (Bounce Effect) لزر الهامبرغر
+    // ===================================================
+    // 16. تأثير Header Hover (إضافة جمالية في التفاعل)
+    // ===================================================
+    if (header) {
+        header.addEventListener('mouseenter', () => {
+            header.style.backgroundColor = 'var(--color-background)';
+            header.style.boxShadow = '0 5px 25px rgba(0, 0, 0, 0.15)';
+        });
+        header.addEventListener('mouseleave', () => {
+            header.style.backgroundColor = 'var(--color-surface)';
+            header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
+        });
+    }
+    
+    // ===================================================
+    // 17. تحريك زر الهامبرغر عند التحميل (إضفاء الهيبة)
+    // ===================================================
     const animateHamburger = () => {
         if (hamburger) {
-            // التأكد من تطبيق CSS @keyframes pulse (يجب أن يكون في style.css أو HTML)
-            hamburger.style.animation = 'pulse 1s 3';
+            hamburger.style.animation = 'pulse 1s 2';
             setTimeout(() => {
-                 hamburger.style.animation = 'none'; // إزالة الحركة بعد 3 مرات
-            }, 3000);
+                 hamburger.style.animation = 'none';
+            }, 2000);
         }
     };
     animateHamburger();
-    
-    console.info("🎉 مجلة الملتقى: تم تفعيل 16 وظيفة جافاسكريبت لزيادة جمالية وهيبة الموقع.");
+
+
+    console.info("🎉 مجلة الملتقى: تم تفعيل 17 وظيفة جافاسكريبت عالية الجودة.");
 });
