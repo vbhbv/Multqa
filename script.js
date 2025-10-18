@@ -1,6 +1,6 @@
 //
-// مجلة الملتقى - التفاعلية الفائقة والجمالية المتقدمة (17 وظيفة)
-// ** تم إزالة تأخير ظهور البطاقات (setTimeout) لضمان الفورية. **
+// مجلة الملتقى - التفاعلية الفخمة (17 وظيفة)
+// ** تم تحديث الكود ليتناسب مع التصميم الجديد V2 **
 //
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeBtn = document.getElementById('close-menu-btn');
     const themeToggle = document.getElementById('dark-mode-toggle');
     const header = document.querySelector('.header');
-    const localStorageKey = 'multaqa_theme_v5';
+    const localStorageKey = 'multaqa_theme_v6';
 
     // ===================================================
     // 1. أداة تحسين الأداء: Scroll Throttling
@@ -67,7 +67,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const applyTheme = (theme) => {
         const isDark = (theme === 'dark');
         body.classList.toggle('dark-mode', isDark);
-        if (themeToggle) themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        // تحديث أيقونة الوضع الليلي (Dark Mode Icon)
+        const icon = themeToggle ? themeToggle.querySelector('i') : null;
+        if (icon) {
+            icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+        }
         localStorage.setItem(localStorageKey, theme);
     };
     
@@ -88,15 +92,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ===================================================
-    // 10. تأثير التحريك عند التمرير (Scroll Reveal) - **تم إزالة التأخير**
+    // 10. تأثير التحريك عند التمرير (Scroll Reveal) - ظهور البطاقات
     // ===================================================
     const scrollReveal = () => {
         const cards = document.querySelectorAll('.card');
-        const triggerBottom = window.innerHeight * 0.85;
+        const triggerBottom = window.innerHeight * 0.9; 
 
         cards.forEach((card) => {
             if (card.getBoundingClientRect().top < triggerBottom) {
-                // تم إزالة setTimeout بالكامل هنا
                 card.classList.add('visible'); 
             }
         });
@@ -130,7 +133,6 @@ document.addEventListener('DOMContentLoaded', () => {
             follower.style.top = `${e.clientY}px`;
         });
         
-        // إخفاء الـ follower عند التوقف
         let timeout;
         document.addEventListener('mousemove', () => {
             follower.style.opacity = '0.6';
@@ -145,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ===================================================
     // 12. تأثير الضوء الخفيف على الأزرار (Aura Effect)
     // ===================================================
-    document.querySelectorAll('.btn-read, .cta-btn').forEach(button => {
+    document.querySelectorAll('.cta-button, .secondary-btn').forEach(button => {
         button.style.position = 'relative';
         button.style.overflow = 'hidden';
 
@@ -160,10 +162,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ===================================================
-    // 13. Dynamic Page Title (لزيادة الهيبة)
+    // 13. Dynamic Page Title
     // ===================================================
     let originalTitle = document.title;
-    const idleTitle = "📜 لا تفتك مقالات الملتقى!";
+    const idleTitle = "✨ عد إلينا لتكمل القراءة...";
 
     document.addEventListener('visibilitychange', () => {
         document.title = document.hidden ? idleTitle : originalTitle;
@@ -185,9 +187,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ===================================================
-    // 15. تحريك زر 'اقرأ الآن' عند التمرير بالماوس (Tilt Effect)
+    // 15. تحريك زر الدعوة للعمل (Tilt Effect)
     // ===================================================
-    document.querySelectorAll('.btn-read, .cta-btn').forEach(button => {
+    document.querySelectorAll('.cta-button, .secondary-btn').forEach(button => {
         button.addEventListener('mousemove', (e) => {
             const rect = e.target.getBoundingClientRect();
             const x = e.clientX - rect.left;
@@ -200,20 +202,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // ===================================================
-    // 16. تأثير Header Hover (إضافة جمالية في التفاعل)
-    // ===================================================
-    if (header) {
-        header.addEventListener('mouseenter', () => {
-            header.style.backgroundColor = 'var(--color-background)';
-            header.style.boxShadow = '0 5px 25px rgba(0, 0, 0, 0.15)';
-        });
-        header.addEventListener('mouseleave', () => {
-            header.style.backgroundColor = 'var(--color-surface)';
-            header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
-        });
-    }
-    
     // ===================================================
     // 17. تحريك زر الهامبرغر عند التحميل (إضفاء الهيبة)
     // ===================================================
