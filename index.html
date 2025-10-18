@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مجلة الملتقى الثقافي للكتاب - الرئيسية</title>
+    <title>مجلة الملتقى الثقافي للكتاب - تصميم خطي فاخر</title>
     
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -13,49 +13,64 @@
     <header class="header">
         <div class="container nav-content">
             <div class="logo">
-                <a href="index.html">الملتقى الثقافي</a>
+                <a href="index.html">الملتقى <span>الثقافي</span></a>
             </div>
-            <nav class="nav-menu">
-                <a href="issues.html">الأعداد المنشورة</a>
-                <a href="about.html">حول المجلة</a>
-            </nav>
-            <button id="dark-mode-toggle" class="theme-toggle" aria-label="تبديل إلى الوضع الليلي">
-                <i class="fas fa-moon"></i>
-            </button>
+            
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <button id="dark-mode-toggle" class="theme-toggle" aria-label="تبديل الوضع">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button id="hamburger-btn" class="hamburger-menu" aria-label="فتح القائمة">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
         </div>
     </header>
 
+    <nav id="sidebar-menu" class="sidebar" role="navigation">
+        <button id="close-menu-btn" class="close-btn" aria-label="إغلاق القائمة">
+            <i class="fas fa-times"></i>
+        </button>
+        <a href="index.html"><i class="fas fa-home"></i> الرئيسية</a>
+        <a href="issues.html"><i class="fas fa-book-open"></i> الأعداد المنشورة</a>
+        <a href="about.html"><i class="fas fa-info-circle"></i> حول المجلة</a>
+        </nav>
+
     <main class="container">
         <section class="hero-section">
-            <h2>منصة الفكر والأدب العربي لعالم الغد</h2>
-            <p style="color: rgba(255, 255, 255, 0.8); font-size: 1.2rem; margin-top: 15px;">نقد معمق، مقالات أصيلة، وتأملات في الفلسفة المعاصرة.</p>
+            <h2>إضاءة على عوالم الفكر والنقد المعاصر</h2>
+            <p>مجلة الملتقى الثقافي: مصدرك الأول لأرقى المقالات والتأملات.</p>
+            
+            <div id="scroll-down-indicator" style="margin-top: 50px; opacity: 1; transition: opacity 0.5s;">
+                <i class="fas fa-chevron-down" style="font-size: 2rem; color: var(--color-secondary);"></i>
+            </div>
         </section>
 
         <section class="latest-issue">
-            <h2 style="text-align: center; margin-bottom: 40px;">العدد الحادي عشر: ثورة السرد الرقمي والتحول الثقافي</h2>
+            <h2 style="text-align: center; margin-bottom: 40px; font-size: 2.5rem;">مقالات مختارة من العدد الأخير</h2>
             
             <div class="article-grid">
                 <article class="card">
                     <div class="card-content">
-                        <h3>تحدي الرواية في عصر الميتافيرس وهشاشة الواقع</h3>
-                        <p style="color: var(--color-text-secondary);">تحليل نقدي معمق لكيفية تطور الشكل الروائي الرقمي وتأثيره على القارئ.</p>
-                        <a href="issues/issue_11/article_1.html" class="btn-action">اقرأ الآن <i class="fas fa-arrow-left"></i></a>
+                        <h3>فلسفة المكان في الأدب السردي الحديث</h3>
+                        <p style="color: var(--color-text-secondary);">دراسة معمقة للمفاهيم الجغرافية وتأثيرها على بناء الشخصيات الروائية.</p>
+                        <a href="issues/issue_11/article_1.html" class="btn-read">اقرأ المقال <i class="fas fa-arrow-left"></i></a>
                     </div>
                 </article>
 
                 <article class="card">
                     <div class="card-content">
-                        <h3>مدخل إلى فلسفة الأخلاق الرقمية: هل الآلة كائن أخلاقي؟</h3>
-                        <p style="color: var(--color-text-secondary);">مناقشة جذرية لمفهوم الوعي والقرار الأخلاقي في أنظمة الذكاء الاصطناعي.</p>
-                        <a href="issues/issue_11/article_2.html" class="btn-action">اقرأ الآن <i class="fas fa-arrow-left"></i></a>
+                        <h3>مراجعة نقدية: رواية "الزمن المهجور"</h3>
+                        <p style="color: var(--color-text-secondary);">تقييم شامل لآخر أعمال الكاتب علي المازني، وتأثيره على المشهد الأدبي.</p>
+                        <a href="issues/issue_11/article_2.html" class="btn-read">اقرأ المقال <i class="fas fa-arrow-left"></i></a>
                     </div>
                 </article>
                 
-                <article class="card" style="border-top-color: var(--color-accent);">
+                <article class="card" style="border-right-color: var(--color-secondary);">
                     <div class="card-content">
-                        <h3 style="color: var(--color-accent);">فهرس العدد كاملاً</h3>
-                        <p style="color: var(--color-text-secondary);">تصفح جميع المقالات والملفات الخاصة بالعدد الحادي عشر من المجلة.</p>
-                        <a href="issues/issue_11/index.html" class="btn-action" style="background-color: var(--color-primary);">اكتشف العدد <i class="fas fa-book-open"></i></a>
+                        <h3 style="color: var(--color-secondary);">فهرس العدد كاملاً</h3>
+                        <p style="color: var(--color-text-secondary);">اكتشف بقية محتوى العدد الأخير، بما في ذلك قصائد ونصوص حصرية.</p>
+                        <a href="issues/issue_11/index.html" class="btn-read" style="background-color: var(--color-primary);">تصفح الفهرس <i class="fas fa-list-alt"></i></a>
                     </div>
                 </article>
                 
@@ -65,7 +80,7 @@
     </main>
 
     <footer class="footer">
-        <p>&copy; 2025 مجلة الملتقى الثقافي للكتاب. جميع الحقوق محفوظة. <a href="#">سياسة الخصوصية</a>.</p>
+        <p>&copy; 2025 مجلة الملتقى الثقافي للكتاب | بتصميم خطي عصري.</p>
     </footer>
 
     <script src="script.js"></script>
