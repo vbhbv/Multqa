@@ -1,1 +1,141 @@
 
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فهرس العدد الحادي عشر: فلسفة التجاوز | مجلة الملتقى الثقافي</title>
+    <link rel="stylesheet" href="../../style.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@700&family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* نمط الشريط الأحمر للمقال المميز في الفهرس */
+        .featured-card {
+            border: 2px solid var(--color-dark-red);
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.2);
+            position: relative;
+        }
+        .featured-card .card-content {
+            border-right: 5px solid var(--color-dark-red);
+        }
+        .featured-tag {
+            background-color: var(--color-dark-red);
+            color: white;
+            padding: 4px 10px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: translate(-10px, -10px);
+            border-radius: 5px;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container nav-content">
+            <div class="logo">
+                <a href="../../index.html">الـملتقى</a>
+            </div>
+            <a href="../../index.html" class="cta-button" style="padding: 10px 20px;"><i class="fas fa-arrow-right"></i> الصفحة الرئيسية</a>
+        </div>
+    </header>
+
+    <main class="container" style="padding-top: 50px; min-height: 80vh;">
+        
+        <h1 style="text-align: center; color: var(--color-primary); font-size: 3.5rem;">فهرس العدد الحادي عشر: فلسفة التجاوز</h1>
+        <p style="text-align: center; margin-bottom: 50px; font-size: 1.2rem; color: var(--color-text-secondary);">إصدار: ربيع 2025 - عدد شامل للمقالات الجريئة والنقد الاجتماعي</p>
+
+        <div class="article-grid">
+            
+            <article class="card color-deep-blue featured-card" style="grid-column: 1 / span 2;"> 
+                <span class="featured-tag"><i class="fas fa-star"></i> مميزة</span>
+                <div class="card-content">
+                    <span class="card-category" style="color: var(--color-dark-red);"><i class="fas fa-flask"></i> دراسة نفسية اجتماعية</span>
+                    <h3 style="color: var(--color-dark-red);">العلل المستترة في جسد المجتمع</h3>
+                    <p>مقالة تحليلية عميقة لمجول شعلان الحيالي تتناول الانفصام الجماعي وكيف يصبح الجمال ضرورة للبقاء الأخلاقي.</p>
+                    <a href="article_8.html" class="read-link">اقرأ المقال المميز</a>
+                </div>
+            </article>
+
+            <article class="card color-emerald">
+                <div class="card-content">
+                    <span class="card-category"><i class="fas fa-hand-holding-heart"></i> مقال إنساني</span>
+                    <h3>ومضة من حياة طفل مقدسي</h3>
+                    <p>مقال مؤثر للكاتبة نور الجبارين يصور الألم الوجودي للطفولة تحت الاحتلال.</p>
+                    <a href="article_1.html" class="read-link">اقرأ المقال</a>
+                </div>
+            </article>
+
+            <article class="card color-coral">
+                <div class="card-content">
+                    <span class="card-category"><i class="fas fa-fist-raised"></i> نقد اجتماعي جريء</span>
+                    <h3>غسل العار: حين يصبح القتل "شرفاً"</h3>
+                    <p>مقالة نقدية جريئة للكاتب عبدالله الأغا تفضح تقديس العادات على حساب القانون والدين.</p>
+                    <a href="article_2.html" class="read-link">اقرأ المقال</a>
+                </div>
+            </article>
+
+            <article class="card color-gold">
+                <div class="card-content">
+                    <span class="card-category"><i class="fas fa-sad-cry"></i> مقال وجداني تأملي</span>
+                    <h3>يسألني أبي كيف حالي؟!</h3>
+                    <p>رسالة وجدانية صادقة للكاتبة ميمونة تتأمل فيها الفقد وجدلية الوجود.</p>
+                    <a href="article_3.html" class="read-link">اقرأ المقال</a>
+                </div>
+            </article>
+
+            <article class="card color-deep-blue"> 
+                <div class="card-content">
+                    <span class="card-category"><i class="fas fa-graduation-cap"></i> نص ساخر</span>
+                    <h3>طالبٌ في الكليةِ مطحون</h3>
+                    <p>قصيدة قصيرة للكاتبة علياء السلامي تصور معاناة الطالب الجامعي بأسلوب وجداني ساخر.</p>
+                    <a href="article_4.html" class="read-link">اقرأ المقال</a>
+                </div>
+            </article>
+
+            <article class="card color-dark-red"> 
+                <div class="card-content">
+                    <span class="card-category"><i class="fas fa-heart"></i> شعر عمودي</span>
+                    <h3>دهرٌ يُمني العاشقين</h3>
+                    <p>قصيدة فخمة للشاعر أحمد لجين في الغزل الوجداني والتعبير عن صعوبة الوصال.</p>
+                    <a href="article_5.html" class="read-link">اقرأ القصيدة</a>
+                </div>
+            </article>
+            
+            <article class="card color-indigo"> 
+                <div class="card-content">
+                    <span class="card-category"><i class="fas fa-brain"></i> تأملات وجودية</span>
+                    <h3>أنا والحبل</h3>
+                    <p>نص فلسفي لمالك السبيني يطرح أسئلة عميقة حول الإدراك والاعتراف بالذات.</p>
+                    <a href="article_6.html" class="read-link">اقرأ المقال</a>
+                </div>
+            </article>
+            
+            <article class="card color-dark-gray"> 
+                <div class="card-content">
+                    <span class="card-category"><i class="fas fa-chart-line"></i> تحليل إجتماعي</span>
+                    <h3>طغيان الغني على الفقير: العنف البنيوي الصامت</h3>
+                    <p>تحليل عميق للرواني يوضح كيف تحولت الثروة إلى أداة لترسيخ التفاوت الطبقي.</p>
+                    <a href="article_7.html" class="read-link">اقرأ المقال</a>
+                </div>
+            </article>
+            
+        </div>
+        
+        <div class="cta-secondary" style="margin-top: 40px;">
+            <p>انتقل إلى الصفحة الرئيسية أو تصفح الأعداد السابقة.</p>
+            <a href="../../index.html" class="secondary-btn"><i class="fas fa-home"></i> الرئيسية</a>
+            <a href="../../archive.html" class="secondary-btn" style="margin-right: 15px;"><i class="fas fa-archive"></i> الأرشيف</a>
+        </div>
+    </main>
+
+    <script src="../../script.js"></script>
+    <footer class="footer">
+        <div class="container footer-content"><p class="footer-logo">الملتقى</p></div>
+        <div class="footer-bottom"><p>&copy; 2025 مجلة الملتقى الثقافي للكتاب. جميع الحقوق محفوظة.</p></div>
+    </footer>
+</body>
+</html>
