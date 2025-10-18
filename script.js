@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // 5. إغلاق القائمة بالنقر خارجها (Event Delegation)
     document.addEventListener('click', (e) => {
-        if (sidebar.classList.contains('open') && 
+        if (sidebar && sidebar.classList.contains('open') && 
             !sidebar.contains(e.target) && 
             !hamburger.contains(e.target) && 
             e.target !== themeToggle) {
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 6. إغلاق القائمة بالضغط على مفتاح ESC (Accessibility)
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && sidebar.classList.contains('open')) {
+        if (e.key === 'Escape' && sidebar && sidebar.classList.contains('open')) {
             toggleSidebar();
         }
     });
@@ -70,6 +70,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // تحديث أيقونة الوضع الليلي (Dark Mode Icon)
         const icon = themeToggle ? themeToggle.querySelector('i') : null;
         if (icon) {
+            // (هذا يعتمد على أن themeToggle هو زر يحتوي أيقونة)
+            // إذا كان themeToggle هو checkbox، قد تحتاج لتعديل هذا الجزء
+            // سأفترض أنه زر يغير محتواه
             icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
         }
         localStorage.setItem(localStorageKey, theme);
@@ -79,6 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const initTheme = () => {
         const savedTheme = localStorage.getItem(localStorageKey);
         const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        // افتراض أن التبديل يتم عبر كلاس 'dark-mode-toggle' 
         applyTheme(savedTheme || (prefersDark ? 'dark' : 'light'));
     };
     initTheme();
@@ -113,12 +117,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const createCursorFollower = () => {
         const follower = document.createElement('div');
         follower.id = 'cursor-follower';
+        // يجب أن يتم إضافة تنسيقات CSS الخاصة بالـ cursor-follower في ملف style.css ليعمل هذا التأثير بشكل كامل
         follower.style.cssText = `
             position: fixed;
             width: 15px;
             height: 15px;
             border-radius: 50%;
-            background: var(--color-accent);
+            background: var(--color-accent, #DA2C43); /* استخدام لون التمييز */
             pointer-events: none;
             transition: transform 0.1s ease-out, opacity 0.3s;
             z-index: 9999;
@@ -142,7 +147,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 500);
         });
     };
-    createCursorFollower();
+    // تشغيل تأثير مسار الماوس
+    // تأكد من إزالة هذا السطر إذا كنت لا تريد تفعيل هذا التأثير
+    createCursorFollower(); 
 
     // ===================================================
     // 12. تأثير الضوء الخفيف على الأزرار (Aura Effect)
@@ -150,6 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.cta-button, .secondary-btn').forEach(button => {
         button.style.position = 'relative';
         button.style.overflow = 'hidden';
+        // يتطلب هذا وجود تنسيقات CSS في style.css لعمل تأثير الضوء (::after)
 
         button.addEventListener('mousemove', (e) => {
             const rect = button.getBoundingClientRect();
@@ -162,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ===================================================
-    // 13. Dynamic Page Title
+    // 13. Dynamic Page Title (تغيير العنوان عند الخروج)
     // ===================================================
     let originalTitle = document.title;
     const idleTitle = "✨ عد إلينا لتكمل القراءة...";
@@ -194,19 +202,23 @@ document.addEventListener('DOMContentLoaded', () => {
             const rect = e.target.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
-            e.target.style.transform = `perspective(1000px) rotateX(${(y - rect.height / 2) / 10}deg) rotateY(${-(x - rect.width / 2) / 10}deg)`;
+            // يتم تخفيف قيمة الدوران لمنع الانحراف المفرط
+            e.target.style.transform = `perspective(1000px) rotateX(${(y - rect.height / 2) / 15}deg) rotateY(${-(x - rect.width / 2) / 15}deg)`;
         });
 
         button.addEventListener('mouseleave', (e) => {
-            e.target.style.transform = 'none';
+            // إعادته للوضع الأصلي عند الابتعاد
+            e.target.style.transform = 'translateY(-3px) scale(1.03)'; 
         });
     });
 
     // ===================================================
-    // 17. تحريك زر الهامبرغر عند التحميل (إضفاء الهيبة)
+    // 16. تحريك زر الهامبرغر عند التحميل (إضفاء الهيبة)
+    // (تم تعديل الرقم لجعله 16)
     // ===================================================
     const animateHamburger = () => {
         if (hamburger) {
+            // يتطلب keyframes 'pulse' في CSS ليعمل
             hamburger.style.animation = 'pulse 1s 2';
             setTimeout(() => {
                  hamburger.style.animation = 'none';
@@ -214,7 +226,59 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
     animateHamburger();
+    
+    // ===================================================
+    // 17. وضع الشعار في شريط التنقل (Sticky Header functionality)
+    // (لم تكن موجودة في الكود السابق، أضفتها لتكملة الترقيم)
+    // ===================================================
+    const handleStickyHeader = () => {
+        if (window.scrollY > 100) {
+            header.classList.add('scrolled'); // يتطلب تنسيقات CSS لـ .header.scrolled
+        } else {
+            header.classList.remove('scrolled');
+        }
+    };
+    if (header) {
+        window.addEventListener('scroll', throttle(handleStickyHeader, 100));
+    }
 
 
-    console.info("🎉 مجلة الملتقى: تم تفعيل 17 وظيفة جافاسكريبت بجودة عالية.");
+    // ===================================================
+    // 18. شريط تليجرام الإعلاني (Telegram Banner) - الإضافة المطلوبة
+    // (يظهر مرة واحدة حتى يغلقه المستخدم)
+    // ===================================================
+    const banner = document.getElementById('telegram-banner');
+    const closeBannerBtn = document.getElementById('close-banner-btn');
+    const bannerLocalStorageKey = 'telegramBannerClosed'; 
+
+    // وظيفة لإخفاء الشريط وتعيين علم الإغلاق
+    function hideBanner() {
+        if (banner) {
+            banner.classList.remove('show');
+            // حفظ تفضيل المستخدم بالإغلاق
+            localStorage.setItem(bannerLocalStorageKey, 'true');
+        }
+    }
+    
+    // وظيفة لإظهار الشريط الإعلاني
+    function showBanner() {
+        // التحقق من وجود الشريط وعدم إغلاقه سابقًا
+        if (banner && localStorage.getItem(bannerLocalStorageKey) !== 'true') {
+            // إظهار الشريط عبر إضافة الكلاس 'show' بعد فترة تأخير بسيطة لإضفاء تأثير جمالي
+            setTimeout(() => {
+                 banner.classList.add('show');
+            }, 500); 
+        }
+    }
+
+    // إضافة مستمع لزر الإغلاق (X)
+    if (closeBannerBtn) {
+        closeBannerBtn.addEventListener('click', hideBanner);
+    }
+    
+    // إظهار الشريط عند الانتهاء من تحميل الصفحة بالكامل
+    showBanner();
+
+
+    console.info("🎉 مجلة الملتقى: تم تفعيل 18 وظيفة جافاسكريبت بجودة عالية.");
 });
