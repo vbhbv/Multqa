@@ -1,48 +1,50 @@
 /*
- * مجلة الملتقى الثقافي للكتاب - تصميم Glamorous Minimalism
- * خطوط Amiri و Noto Naskh، تدرجات لونية عميقة، وتأثيرات ظل خفية.
+ * مجلة الملتقى الثقافي للكتاب - تصميم خطي (Calligraphy & Modern Teal)
+ * ألوان دافئة، خط مزخرف لاسم المجلة، وبنية قائمة جانبية عصرية.
  */
 
 /* ===================================================
-   1. الخطوط والمتغيرات الأساسية (الوضع النهاري الفخم)
+   1. الخطوط والمتغيرات الأساسية (الوضع النهاري الدافئ)
    =================================================== */
-@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Noto+Naskh+Arabic:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@700&family=Noto+Naskh+Arabic:wght@400;700&display=swap');
 
 :root {
-    /* الألوان الفخمة للوضع النهاري */
-    --color-primary: #1C3A5E;      /* أزرق محيطي عميق (للفخامة) */
-    --color-secondary: #0A84FF;    /* أزرق ساطع (للتمييز) */
-    --color-accent: #E5B800;       /* ذهبي خفيف (للتفاعل/الهايلايت) */
-    --color-background: #F0F4F8;   /* خلفية فاتحة ناعمة */
+    /* الألوان الدافئة الجديدة */
+    --color-primary: #008080;      /* لون تركوازي (Teal) عميق */
+    --color-secondary: #FFD700;    /* لون ذهبي ساطع (للفخامة) */
+    --color-accent: #E94F37;       /* لون ناري للتفاعل */
+    --color-background: #FAFAFA;   /* خلفية فاتحة دافئة */
     --color-surface: #FFFFFF;      /* خلفية البطاقات والأجزاء الرئيسية */
-    --color-text-main: #333333;    /* نص أساسي غامق */
-    --color-text-secondary: #6B7A8F; /* نص ثانوي أنيق */
-    --color-border: #E8E8E8;
+    --color-text-main: #3C4858;    /* نص رمادي داكن (مريح) */
+    --color-text-secondary: #6B7A8F;
+    --color-border: #E5E5E5;
 
     /* الخطوط */
-    --font-heading: 'Amiri', serif;
+    --font-logo: 'Aref Ruqaa', serif; /* خط عريض ومزخرف لاسم المجلة */
+    --font-heading: 'Noto Naskh Arabic', serif;
     --font-body: 'Noto Naskh Arabic', serif;
 
     /* الانتقال */
-    --transition-speed: 0.7s; /* انتقال أطول وأكثر سلاسة */
+    --transition-speed: 0.5s;
+    --menu-width: 300px; /* عرض القائمة الجانبية */
 }
 
 /* ===================================================
-   2. الوضع الليلي العميق (Deep Dark Mode)
+   2. الوضع الليلي (Dark Mode) - تركيز على التركواز الداكن
    =================================================== */
 body.dark-mode {
-    --color-primary: #74A0F7;      /* أزرق فاتح مريح */
-    --color-secondary: #A0C3FF;
-    --color-accent: #FFD700;       /* ذهبي ساطع */
-    --color-background: #0D1117;   /* خلفية داكنة (GitHub Dark Theme) */
-    --color-surface: #161B22;      /* خلفية البطاقات الداكنة */
-    --color-text-main: #FFFFFF;    /* نص أبيض نقي */
+    --color-primary: #4DC1C1;      /* تركوازي فاتح */
+    --color-secondary: #FFEA80;    /* ذهبي باهت */
+    --color-accent: #FF6B52;
+    --color-background: #1A1A1A;   /* خلفية داكنة جداً */
+    --color-surface: #262626;      /* خلفية البطاقات الداكنة */
+    --color-text-main: #F0F0F0;
     --color-text-secondary: #B0B0B0;
-    --color-border: #30363D;
+    --color-border: #444444;
 }
 
 /* ===================================================
-   3. الأنماط العامة والهيكلية
+   3. الأنماط العامة وإعادة الضبط
    =================================================== */
 * {
     box-sizing: border-box;
@@ -54,35 +56,39 @@ body {
     font-family: var(--font-body);
     background-color: var(--color-background);
     color: var(--color-text-main);
-    line-height: 1.8;
+    line-height: 1.7;
     direction: rtl;
     transition: background-color var(--transition-speed), color var(--transition-speed);
 }
 
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
 .container {
-    max-width: 1400px; /* مساحة أوسع */
+    max-width: 1300px;
     margin: 0 auto;
-    padding: 0 40px;
+    padding: 0 25px;
 }
 
 h1, h2, h3 {
     font-family: var(--font-heading);
-    color: var(--color-primary);
+    color: var(--color-text-main);
     margin-bottom: 0.7em;
-    font-weight: 700;
 }
 
 /* ===================================================
-   4. شريط التنقل والفخامة الجانبية
+   4. شريط التنقل وزر الهامبرغر
    =================================================== */
 .header {
     background-color: var(--color-surface);
-    border-bottom: 1px solid var(--color-border);
-    padding: 20px 0;
-    box-shadow: 0 1px 15px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    padding: 15px 0;
     position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 2000;
 }
 
 .nav-content {
@@ -91,170 +97,171 @@ h1, h2, h3 {
     align-items: center;
 }
 
+/* اسم المجلة بالخط المزخرف الفاخر */
 .logo a {
-    font-size: 2.5rem;
+    font-family: var(--font-logo);
+    font-size: 2.8rem;
     color: var(--color-primary);
-    transition: color 0.3s;
+    line-height: 1;
 }
-.logo a:hover {
+.logo span {
     color: var(--color-secondary);
 }
 
-.nav-menu a {
-    margin-left: 35px; /* استخدام margin-left للتنسيق العربي */
-    font-size: 1.15rem;
-    font-weight: 500;
-    color: var(--color-text-secondary);
-    letter-spacing: 0.5px;
-    position: relative;
-    padding-bottom: 5px;
-}
-.nav-menu a::after { /* خط أنيق تحت الروابط */
-    content: '';
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    width: 0;
-    height: 2px;
-    background-color: var(--color-accent);
-    transition: width 0.3s ease-out;
-}
-.nav-menu a:hover::after {
-    width: 100%;
-}
-
-/* زر الوضع الليلي */
-.theme-toggle {
+/* زر الهامبرغر */
+.hamburger-menu {
+    display: flex; /* إظهار الزر في جميع الأوقات */
     background: none;
-    border: 2px solid var(--color-border);
-    border-radius: 50%;
-    width: 48px;
-    height: 48px;
+    border: none;
     cursor: pointer;
-    color: var(--color-text-main);
-    font-size: 1.5rem;
-    transition: all 0.4s ease;
+    font-size: 1.8rem;
+    color: var(--color-primary);
+    transition: color 0.3s;
+    padding: 10px;
+    border-radius: 5px;
 }
-.theme-toggle:hover {
-    border-color: var(--color-accent);
-    color: var(--color-accent);
-    transform: scale(1.1);
+.hamburger-menu:hover {
+    color: var(--color-secondary);
 }
 
 /* ===================================================
-   5. قسم البطل (Hero Section)
+   5. القائمة الجانبية العصرية (Off-Canvas Menu)
+   =================================================== */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: calc(-1 * var(--menu-width)); /* إخفائه خارج الشاشة */
+    width: var(--menu-width);
+    height: 100%;
+    background-color: var(--color-surface);
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.2);
+    padding: 40px 20px;
+    transition: right 0.4s ease-in-out;
+    z-index: 3000;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.sidebar.open {
+    right: 0;
+}
+
+.sidebar a {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    padding: 15px 0;
+    width: 100%;
+    border-bottom: 1px dashed var(--color-border);
+    color: var(--color-text-main);
+    transition: background-color 0.3s;
+}
+
+.sidebar a:hover {
+    background-color: var(--color-background);
+    color: var(--color-primary);
+    padding-right: 10px;
+}
+
+/* زر إغلاق القائمة */
+.close-btn {
+    align-self: flex-end;
+    background: var(--color-accent);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 1.2rem;
+    line-height: 1;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+/* ===================================================
+   6. الواجهة الرئيسية (Hero & Cards)
    =================================================== */
 .hero-section {
-    background: linear-gradient(135deg, var(--color-primary), #3E638D); /* تدرج لوني عميق */
+    background: linear-gradient(135deg, var(--color-primary), #009999);
     color: white;
-    padding: 120px 50px;
-    margin: 50px auto;
-    border-radius: 20px;
+    padding: 100px 50px;
+    margin: 40px auto;
+    border-radius: 5px; /* تصميم أكثر حدة وأقل استدارة */
     text-align: center;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3); /* ظل عميق لإظهار الفخامة */
-    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 .hero-section h2 {
-    color: white;
-    font-size: 4rem;
-    margin-bottom: 15px;
-    letter-spacing: 1px;
+    font-size: 3.5rem;
+    color: var(--color-secondary); /* استخدام الذهبي في البانر */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
 }
 .hero-section p {
-    font-family: var(--font-body);
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     color: rgba(255, 255, 255, 0.9);
 }
 
-/* ===================================================
-   6. تصميم البطاقات (Article Cards)
-   =================================================== */
 .article-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 35px;
     padding: 50px 0;
 }
 
 .card {
     background-color: var(--color-surface);
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
-    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.4, 1), box-shadow 0.5s, border 0.5s;
-    border-bottom: 4px solid var(--color-secondary); /* شريط تمييز سفلي */
-    opacity: 0; /* للتحريك باستخدام JS */
-    transform: translateY(20px);
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border-right: 8px solid var(--color-primary); /* شريط جانبي جديد ومميز */
+    transform: translateX(30px); /* للتحريك عند الظهور */
+    opacity: 0;
 }
 
 .card:hover {
-    transform: translateY(-15px);
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+    transform: translateX(0px) scale(1.02);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
 }
 
 .card-content {
-    padding: 30px;
+    padding: 25px;
 }
 
 .card-content h3 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     color: var(--color-primary);
-    min-height: 80px;
+    min-height: 70px;
 }
 
 /* زر القراءة */
 .btn-read {
     display: inline-block;
-    margin-top: 20px;
-    padding: 12px 30px;
+    margin-top: 15px;
+    padding: 10px 20px;
     background-color: var(--color-accent);
-    color: var(--color-surface);
-    border-radius: 8px;
+    color: white;
+    border-radius: 5px;
     font-weight: 700;
-    transition: background-color 0.3s, transform 0.3s;
-}
-.btn-read:hover {
-    background-color: #CC9900;
-    transform: translateY(-3px);
 }
 
 /* ===================================================
-   7. تأثيرات الحركة البصرية (Opacity & Scaling)
+   7. تأثيرات الحركة (لـ Scroll Reveal)
    =================================================== */
-/* الفئة التي يضيفها JS لإظهار العناصر */
 .visible {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0);
 }
 
 /* ===================================================
-   8. التذييل (Footer)
+   8. التصميم المتجاوب
    =================================================== */
-.footer {
-    text-align: center;
-    padding: 50px;
-    margin-top: 80px;
-    border-top: 1px solid var(--color-border);
-    background-color: var(--color-surface);
-    color: var(--color-text-secondary);
-    font-size: 1rem;
-    box-shadow: 0 -1px 15px rgba(0, 0, 0, 0.03);
-}
-
-/* ===================================================
-   9. التصميم المتجاوب
-   =================================================== */
-@media (max-width: 992px) {
+@media (max-width: 600px) {
     .container {
-        padding: 0 20px;
-    }
-    .nav-content {
-        flex-direction: column;
-    }
-    .nav-menu {
-        margin: 15px 0;
+        padding: 0 15px;
     }
     .hero-section h2 {
         font-size: 2.5rem;
+    }
+    .sidebar {
+        width: 100%; /* القائمة تملأ الشاشة بالكامل في الهواتف */
     }
 }
