@@ -1,88 +1,242 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مجلة الملتقى الثقافي للكتاب - تصميم خطي فاخر</title>
+//
+// مجلة الملتقى - التفاعلية الفائقة والجمالية المتقدمة (18 وظيفة نظيفة)
+//
+
+document.addEventListener('DOMContentLoaded', () => {
+    // تحديد العناصر الأساسية
+    const body = document.body;
+    const sidebar = document.getElementById('sidebar-menu');
+    const hamburger = document.getElementById('hamburger-btn');
+    const closeBtn = document.getElementById('close-menu-btn');
+    const themeToggle = document.getElementById('dark-mode-toggle');
+    const header = document.querySelector('.header');
+    const localStorageKey = 'multaqa_theme_v5';
+
+    // ===================================================
+    // 1. أداة تحسين الأداء: Scroll Throttling
+    // ===================================================
+    const throttle = (func, limit) => {
+        let inThrottle;
+        return function() {
+            const args = arguments;
+            const context = this;
+            if (!inThrottle) {
+                func.apply(context, args);
+                inThrottle = true;
+                setTimeout(() => inThrottle = false, limit);
+            }
+        };
+    };
+
+    // ===================================================
+    // 2. وظيفة فتح/إغلاق القائمة الجانبية (Hamburger Menu)
+    // ===================================================
+    const toggleSidebar = () => {
+        const isOpen = sidebar.classList.toggle('open');
+        // 3. منع التمرير عند فتح القائمة
+        body.style.overflow = isOpen ? 'hidden' : 'auto';
+    };
+
+    // 4. مستمعات النقر لفتح وإغلاق القائمة
+    if (hamburger && closeBtn) {
+        hamburger.addEventListener('click', toggleSidebar);
+        closeBtn.addEventListener('click', toggleSidebar);
+    }
     
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
-<body>
+    // 5. تحسين الأداء: إغلاق القائمة بالنقر خارجها (Event Delegation)
+    document.addEventListener('click', (e) => {
+        if (sidebar.classList.contains('open') && 
+            !sidebar.contains(e.target) && 
+            !hamburger.contains(e.target) && 
+            e.target !== themeToggle) { // استثناء زر الثيم
+            toggleSidebar();
+        }
+    });
 
-    <header class="header">
-        <div class="container nav-content">
-            <div class="logo">
-                <a href="index.html">الملتقى <span>الثقافي</span></a>
-            </div>
-            
-            <div style="display: flex; align-items: center; gap: 15px;">
-                <button id="dark-mode-toggle" class="theme-toggle" aria-label="تبديل الوضع">
-                    <i class="fas fa-moon"></i>
-                </button>
-                <button id="hamburger-btn" class="hamburger-menu" aria-label="فتح القائمة">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
-        </div>
-    </header>
+    // 6. إغلاق القائمة بالضغط على مفتاح ESC (Accessibility)
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && sidebar.classList.contains('open')) {
+            toggleSidebar();
+        }
+    });
 
-    <nav id="sidebar-menu" class="sidebar" role="navigation">
-        <button id="close-menu-btn" class="close-btn" aria-label="إغلاق القائمة">
-            <i class="fas fa-times"></i>
-        </button>
-        <a href="index.html"><i class="fas fa-home"></i> الرئيسية</a>
-        <a href="issues.html"><i class="fas fa-book-open"></i> الأعداد المنشورة</a>
-        <a href="about.html"><i class="fas fa-info-circle"></i> حول المجلة</a>
-    </nav>
+    // ===================================================
+    // 7. تطبيق الوضع الليلي (Dark Mode Logic)
+    // ===================================================
+    const applyTheme = (theme) => {
+        const isDark = (theme === 'dark');
+        body.classList.toggle('dark-mode', isDark);
+        if (themeToggle) themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        localStorage.setItem(localStorageKey, theme);
+    };
+    
+    // 8. تهيئة الثيم عند التحميل
+    const initTheme = () => {
+        const savedTheme = localStorage.getItem(localStorageKey);
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        applyTheme(savedTheme || (prefersDark ? 'dark' : 'light'));
+    };
+    initTheme();
 
-    <main class="container">
-        <section class="intro-section">
-            <h1>مجلة الملتقى الثقافي للكتاب</h1>
-            <p>
-                منذ عام 2020، نضيء على عوالم الفكر والنقد المعاصر. نحن منصة عربية مستقلة مخصصة لتقديم أرقى المقالات والدراسات الأدبية والفكرية، بعيداً عن المألوف.
-            </p>
-            <a href="#latest-issue" class="cta-btn"><i class="fas fa-arrow-down"></i> تصفح العدد الأخير</a>
-        </section>
+    // 9. مستمع النقر لزر الوضع الليلي
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const isDarkMode = body.classList.contains('dark-mode');
+            applyTheme(isDarkMode ? 'light' : 'dark');
+        });
+    }
+
+    // ===================================================
+    // 10. تأثير التحريك عند التمرير (Scroll Reveal)
+    // ===================================================
+    const scrollReveal = () => {
+        const cards = document.querySelectorAll('.card');
+        const triggerBottom = window.innerHeight * 0.85;
+
+        cards.forEach((card, index) => {
+            if (card.getBoundingClientRect().top < triggerBottom) {
+                setTimeout(() => {
+                    card.classList.add('visible');
+                }, index * 100);
+            }
+        });
+    };
+    window.addEventListener('scroll', throttle(scrollReveal, 100));
+    scrollReveal();
+
+    // ===================================================
+    // 11. تأثير Cursor Trail (مسار الماوس الجمالي)
+    // ===================================================
+    const createCursorFollower = () => {
+        const follower = document.createElement('div');
+        follower.id = 'cursor-follower';
+        follower.style.cssText = `
+            position: fixed;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: var(--color-accent);
+            pointer-events: none;
+            transition: transform 0.1s ease-out, opacity 0.3s;
+            z-index: 9999;
+            opacity: 0.6;
+            mix-blend-mode: soft-light;
+            transform: translate(-50%, -50%);
+        `;
+        body.appendChild(follower);
+
+        document.addEventListener('mousemove', (e) => {
+            follower.style.left = `${e.clientX}px`;
+            follower.style.top = `${e.clientY}px`;
+        });
         
-        <section class="latest-issue" id="latest-issue"> 
-            <h2 style="text-align: center; margin-bottom: 40px; font-size: 2.5rem;">مقالات مختارة من العدد الأخير</h2>
+        // إخفاء الـ follower عند التوقف
+        let timeout;
+        document.addEventListener('mousemove', () => {
+            follower.style.opacity = '0.6';
+            clearTimeout(timeout);
+            timeout = setTimeout(() => {
+                follower.style.opacity = '0';
+            }, 500);
+        });
+    };
+    createCursorFollower();
+
+    // ===================================================
+    // 12. تأثير الضوء الخفيف على الأزرار (Aura Effect)
+    // ===================================================
+    document.querySelectorAll('.btn-read, .cta-btn').forEach(button => {
+        button.style.position = 'relative';
+        button.style.overflow = 'hidden';
+
+        button.addEventListener('mousemove', (e) => {
+            const rect = button.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
             
-            <div class="article-grid">
-                <article class="card">
-                    <div class="card-content">
-                        <h3>فلسفة المكان في الأدب السردي الحديث</h3>
-                        <p style="color: var(--color-text-secondary);">دراسة معمقة للمفاهيم الجغرافية وتأثيرها على بناء الشخصيات الروائية.</p>
-                        <a href="issues/issue_11/article_1.html" class="btn-read">اقرأ المقال <i class="fas fa-arrow-left"></i></a>
-                    </div>
-                </article>
+            button.style.setProperty('--x', `${x}px`);
+            button.style.setProperty('--y', `${y}px`);
+        });
+    });
 
-                <article class="card">
-                    <div class="card-content">
-                        <h3>مراجعة نقدية: رواية "الزمن المهجور"</h3>
-                        <p style="color: var(--color-text-secondary);">تقييم شامل لآخر أعمال الكاتب علي المازني، وتأثيره على المشهد الأدبي.</p>
-                        <a href="issues/issue_11/article_2.html" class="btn-read">اقرأ المقال <i class="fas fa-arrow-left"></i></a>
-                    </div>
-                </article>
-                
-                <article class="card" style="border-right-color: var(--color-secondary);">
-                    <div class="card-content">
-                        <h3 style="color: var(--color-secondary);">فهرس العدد كاملاً</h3>
-                        <p style="color: var(--color-text-secondary);">اكتشف بقية محتوى العدد الأخير، بما في ذلك قصائد ونصوص حصرية.</p>
-                        <a href="issues/issue_11/index.html" class="btn-read" style="background-color: var(--color-primary);">تصفح الفهرس <i class="fas fa-list-alt"></i></a>
-                    </div>
-                </article>
-                
-            </div>
-        </section>
+    // ===================================================
+    // 13. Dynamic Page Title (لزيادة الهيبة عند عدم التركيز)
+    // ===================================================
+    let originalTitle = document.title;
+    const idleTitle = "📜 لا تفتك مقالات الملتقى!";
 
-    </main>
+    document.addEventListener('visibilitychange', () => {
+        document.title = document.hidden ? idleTitle : originalTitle;
+    });
 
-    <footer class="footer">
-        <p>&copy; 2025 مجلة الملتقى الثقافي للكتاب | بتصميم خطي عصري.</p>
-    </footer>
+    // ===================================================
+    // 14. Smooth Scroll لجميع الروابط الداخلية
+    // ===================================================
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetElement = document.querySelector(this.getAttribute('href'));
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
 
-    <script src="script.js"></script>
+    // ===================================================
+    // 15. تحريك زر 'اقرأ الآن' عند التمرير بالماوس (Tilt Effect)
+    // ===================================================
+    document.querySelectorAll('.btn-read, .cta-btn').forEach(button => {
+        button.addEventListener('mousemove', (e) => {
+            const rect = e.target.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            e.target.style.transform = `perspective(1000px) rotateX(${(y - rect.height / 2) / 10}deg) rotateY(${-(x - rect.width / 2) / 10}deg)`;
+        });
 
-</body>
-</html>
+        button.addEventListener('mouseleave', (e) => {
+            e.target.style.transform = 'none';
+        });
+    });
+    
+    // ===================================================
+    // 16. تأثير (Delayed Fade-in Body)
+    // ===================================================
+    // يتطلب إضافة CSS لـ opacity: 0; على الـ body في البداية
+    setTimeout(() => {
+        body.style.transition = 'opacity 1s ease-in';
+        body.style.opacity = '1';
+    }, 100); // 100ms تأخير بسيط بعد التحميل
+
+    // ===================================================
+    // 17. تأثير Header Hover (إضافة جمالية في التفاعل)
+    // ===================================================
+    if (header) {
+        header.addEventListener('mouseenter', () => {
+            header.style.backgroundColor = 'var(--color-background)'; // خلفية مختلفة قليلاً عند التمرير
+            header.style.boxShadow = '0 5px 25px rgba(0, 0, 0, 0.15)';
+        });
+        header.addEventListener('mouseleave', () => {
+            header.style.backgroundColor = 'var(--color-surface)'; // العودة للخلفية الأصلية
+            header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
+        });
+        header.style.transition = 'all 0.4s ease'; // تطبيق transition في JS
+    }
+    
+    // ===================================================
+    // 18. تحريك زر الهامبرغر عند التحميل (إضفاء الهيبة)
+    // ===================================================
+    const animateHamburger = () => {
+        if (hamburger) {
+            hamburger.style.animation = 'pulse 1s 2';
+            setTimeout(() => {
+                 hamburger.style.animation = 'none';
+            }, 2000);
+        }
+    };
+    animateHamburger();
+
+
+    console.info("🎉 مجلة الملتقى: تم تفعيل 18 وظيفة جافاسكريبت عالية الجودة.");
+});
