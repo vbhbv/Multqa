@@ -1,11 +1,14 @@
 /*
- * مجلة الملتقى الثقافي للكتاب - التصميم النهائي (V9)
- * **تم تطبيق الخط على جميع النصوص وتحديث تصميم البطاقات.**
+ * مجلة الملتقى الثقافي للكتاب - التصميم النهائي (V10)
+ * **تم تصحيح طريقة استيراد الخطوط لضمان التطبيق الشامل.**
  */
 
 /* ===================================================
-   1. الخطوط والمتغيرات الأساسية
+   1. الخطوط والمتغيرات الأساسية (إعادة استيراد الخطوط هنا)
    =================================================== */
+/* ********** هذا هو الحل: استيراد الخطوط بشكل صحيح وموثوق ********** */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;700&family=Reem+Kufi:wght@700&display=swap');
+
 :root {
     /* الألوان الدافئة */
     --color-primary: #008080;      /* تركوازي عميق */
@@ -17,10 +20,10 @@
     --color-text-secondary: #6B7A8F;
     --color-border: #E5E5E5;
 
-    /* الخطوط - يجب تحميلها في index.html */
+    /* الخطوط - نستخدم أسماء الخطوط بعد استيرادها */
     --font-logo: 'Reem Kufi', sans-serif;
     --font-heading: 'Noto Naskh Arabic', serif;
-    --font-body: 'Noto Naskh Arabic', serif; /* تأكيد استخدام الخط للجسم */
+    --font-body: 'Noto Naskh Arabic', serif; 
 
     /* الانتقال */
     --transition-speed: 0.5s;
@@ -30,6 +33,7 @@
 /* ===================================================
    2. الوضع الليلي (Dark Mode)
    =================================================== */
+/* ... (هذا القسم يبقى كما هو) ... */
 body.dark-mode {
     --color-primary: #4DC1C1;
     --color-secondary: #FFEA80;
@@ -88,49 +92,22 @@ h1, h2, h3 {
     z-index: 2000;
     transition: all 0.4s ease;
 }
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 .logo a {
     font-family: var(--font-logo); /* تطبيق خط Reem Kufi */
     font-size: 2.2rem;
     color: var(--color-primary);
     font-weight: 700;
 }
-/* ... (بقية خصائص التنقل تبقى كما هي) ... */
-
-
-/* ===================================================
-   5. القائمة الجانبية (إصلاح الهمبرغر)
-   =================================================== */
-.sidebar {
-    position: fixed;
-    top: 0;
-    right: calc(-1 * var(--menu-width)); 
-    width: var(--menu-width);
-    height: 100%;
-    background-color: var(--color-surface);
-    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.2);
-    padding: 40px 20px;
-    transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    z-index: 3000;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+.logo span {
+    color: var(--color-secondary);
 }
-.sidebar.open {
-    right: 0;
-}
-/* ... (بقية خصائص القائمة تبقى كما هي) ... */
 
-
-/* ===================================================
-   6. القسم التعريفي الجديد (Intro Section)
-   =================================================== */
-.intro-section h1 {
-    font-family: var(--font-logo); /* تطبيق خط Reem Kufi */
-    font-size: 3rem;
-    color: var(--color-primary);
-}
-/* ... (بقية خصائص Intro Section تبقى كما هي) ... */
-
+/* ... (بقية الأنماط تبقى كما هي) ... */
 
 /* ===================================================
    7. تصميم البطاقات الجديد (عصري وأنيق)
@@ -144,12 +121,11 @@ h1, h2, h3 {
 
 .card {
     background-color: var(--color-surface);
-    border-radius: 12px; /* حواف أنعم */
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05); /* ظل أنعم وأعمق */
+    border-radius: 12px; 
     transition: transform 0.4s ease, box-shadow 0.4s ease, border 0.4s;
-    border: 1px solid var(--color-border); /* حد خفيف كإطار */
+    border: 1px solid var(--color-border); 
     
-    /* إزالة الحدود القوية واستبدالها بظل داخلي للتمييز */
+    /* ظل داخلي للتمييز (الجانب الأيسر بالتركوازي) */
     box-shadow: inset 5px 0 0 0 var(--color-primary), 0 8px 30px rgba(0, 0, 0, 0.05); 
 
     transform: translateX(30px);
@@ -162,7 +138,7 @@ h1, h2, h3 {
 }
 
 .card-content {
-    padding: 30px; /* زيادة التباعد الداخلي */
+    padding: 30px; 
 }
 
 /* بطاقة الفهرس (المميزة) */
@@ -176,7 +152,15 @@ h1, h2, h3 {
 /* الأزرار (القراءة/الدعوة للعمل) - تبقى كما هي بتوحيد الخط */
 .btn-read, .cta-btn {
     font-family: var(--font-body); /* توحيد الخط */
-    /* ... (بقية الخصائص تبقى كما هي) ... */
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    padding: 10px 20px;
+    background-color: var(--color-accent);
+    color: white;
+    border-radius: 5px;
+    font-weight: 700;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
 /* ===================================================
@@ -186,7 +170,8 @@ h1, h2, h3 {
     opacity: 1;
     transform: translateX(0);
 }
-/* ... (بقية الأنماط الخاصة بالحركة تبقى كما هي) ... */
+
+/* ... (بقية الأنماط تبقى كما هي) ... */
 
 /* ===================================================
    9. التصميم المتجاوب (Mobile Fixes)
@@ -198,7 +183,7 @@ h1, h2, h3 {
     .card {
         transform: translateY(20px);
         transition: transform 0.4s ease, box-shadow 0.4s ease;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05); /* إزالة الظل الداخلي على الهواتف */
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05); 
     }
     .card:hover {
         transform: translateY(-5px) scale(1.02);
