@@ -12,6 +12,102 @@
     
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* ===================================================
+           تنسيق شريط تليجرام الإعلاني (CSS)
+           =================================================== */
+        #telegram-banner {
+            position: fixed;
+            bottom: -80px; /* مخفي في البداية */
+            left: 0;
+            width: 100%;
+            background-color: #0088CC; /* لون تليجرام الأزرق */
+            color: white;
+            padding: 15px 20px; 
+            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 5000;
+            display: flex;
+            justify-content: space-between; 
+            align-items: center;
+            transition: bottom 0.5s ease-out;
+            text-align: right; 
+            font-size: 1rem; 
+        }
+
+        #telegram-banner.show {
+            bottom: 0; 
+        }
+        
+        .banner-text-content {
+            display: flex;
+            align-items: center;
+            flex-grow: 1; 
+        }
+
+        /* تنسيق زر "اضغط للإنضمام" الجديد */
+        .join-btn {
+            display: inline-block;
+            padding: 8px 15px; 
+            background-color: var(--color-secondary); 
+            color: var(--color-text-main);
+            font-weight: 700;
+            border-radius: 5px;
+            margin-right: 15px; 
+            transition: background-color 0.3s;
+            text-decoration: none; 
+            font-size: 0.95rem; 
+            white-space: nowrap; 
+        }
+        .join-btn:hover {
+            background-color: #FFD700;
+        }
+
+        #close-banner-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-left: 10px; 
+            flex-shrink: 0;
+        }
+        
+        /* ===================================================
+           تحسينات شاشات الهاتف (<= 650px)
+           =================================================== */
+        @media (max-width: 650px) {
+            #telegram-banner {
+                flex-direction: column; 
+                text-align: center;
+                padding: 10px 10px 15px; 
+                align-items: stretch; 
+            }
+            
+            .banner-text-content {
+                flex-direction: column;
+                align-items: center;
+                width: 100%; 
+            }
+
+            .banner-text-content > div {
+                 margin-bottom: 8px; 
+            }
+            
+            .join-btn {
+                margin-top: 5px;
+                margin-right: 0;
+                width: 90%; 
+                text-align: center;
+            }
+
+            #close-banner-btn {
+                position: absolute; 
+                top: 5px;
+                left: 5px;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -125,8 +221,8 @@
                 <a href="#">انضم إلينا</a>
             </div>
             <div class="social-icons">
+                <a href="tg://resolve?domain=iiollr" target="_blank" aria-label="قناة تليجرام للمجلة"><i class="fab fa-telegram-plane"></i></a>
                 <a href="#" aria-label="تويتر/إكس"><i class="fab fa-x-twitter"></i></a>
-                <a href="#" aria-label="فيسبوك"><i class="fab fa-facebook-f"></i></a>
                 <a href="#" aria-label="إنستغرام"><i class="fab fa-instagram"></i></a>
             </div>
         </div>
@@ -134,6 +230,18 @@
             <p>&copy; 2025 مجلة الملتقى الثقافي للكتاب. جميع الحقوق محفوظة.</p>
         </div>
     </footer>
+    
+    <div id="telegram-banner">
+        <div class="banner-text-content">
+            <div style="margin-left: 10px;">
+                انضم إلى قناة مجلة الملتقى على تليجرام لتحصل على جديد المقالات فوراً!
+            </div>
+            <a href="tg://resolve?domain=iiollr" target="_blank" class="join-btn">
+                <i class="fab fa-telegram-plane"></i> اضغط للإنضمام إلى القناة
+            </a>
+        </div>
+        <button id="close-banner-btn" aria-label="إغلاق الإعلان"><i class="fas fa-times"></i></button>
+    </div>
 
     <script src="script.js"></script>
 
