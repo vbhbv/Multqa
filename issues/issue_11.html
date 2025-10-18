@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@700&family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
     
     <style>
-        /* تطبيق الخط الفخم على العنوان الرئيسي (إذا لم يعمل في style.css) */
+        /* تطبيق الخط الفخم على العنوان الرئيسي */
         h1 {
             font-family: var(--font-heading);
             color: var(--color-primary); 
@@ -23,7 +23,7 @@
 
         /* تنسيق البطاقة المميزة (الشريط الأحمر) */
         .featured-card {
-            border: 2px solid var(--color-accent); /* استخدام لون التمييز المرجاني */
+            border: 2px solid var(--color-accent);
             box-shadow: 0 6px 20px rgba(218, 44, 67, 0.3); 
             position: relative;
         }
@@ -49,7 +49,7 @@
             z-index: 10;
         }
 
-        /* تصحيح طول البطاقات المفرط (لضمان ظهور سطرين فقط من الوصف) */
+        /* تصحيح طول البطاقات المفرط */
         .card-content p {
             font-size: 0.95rem;
             margin-bottom: 15px;
@@ -69,7 +69,7 @@
         }
         
         /* ===================================================
-           تنسيق شريط تليجرام الإعلاني
+           تنسيق شريط تليجرام الإعلاني (CSS)
            =================================================== */
         #telegram-banner {
             position: fixed;
@@ -82,10 +82,10 @@
             box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.2);
             z-index: 5000;
             display: flex;
-            justify-content: center;
+            justify-content: space-between; /* لتحريك زر الإغلاق على الجانب */
             align-items: center;
             transition: bottom 0.5s ease-out;
-            text-align: center;
+            text-align: right; 
             font-size: 1.1rem;
         }
 
@@ -93,28 +93,46 @@
             bottom: 0; /* يظهر عندما يتم تفعيل الكلاس show بالـ JS */
         }
 
-        #telegram-banner a {
-            color: var(--color-secondary); /* ذهبي للمرئية */
+        /* تنسيق زر "اضغط للإنضمام" الجديد */
+        .join-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--color-secondary); /* اللون الذهبي */
+            color: var(--color-text-main);
             font-weight: 700;
+            border-radius: 5px;
             margin-right: 15px;
-            text-decoration: underline;
+            transition: background-color 0.3s;
         }
-        
+        .join-btn:hover {
+            background-color: #FFD700; /* تفتيح اللون عند المرور */
+        }
+
         #close-banner-btn {
             background: none;
             border: none;
             color: white;
             font-size: 1.2rem;
-            margin-right: 20px;
             cursor: pointer;
-            position: absolute;
-            left: 10px;
+            margin-left: 20px; 
+            position: static; 
         }
         
         @media (max-width: 600px) {
             #telegram-banner {
                 font-size: 0.9rem;
-                padding: 15px 10px 15px 50px; /* مساحة لزر الإغلاق */
+                flex-direction: column;
+                text-align: center;
+                padding: 15px 10px;
+            }
+            .join-btn {
+                margin-top: 10px;
+                margin-right: 0;
+            }
+            #close-banner-btn {
+                position: absolute;
+                top: 5px;
+                left: 5px;
             }
         }
     </style>
@@ -240,8 +258,12 @@
     </footer>
     
     <div id="telegram-banner">
-        انضم إلى قناة مجلة الملتقى على تليجرام لتحصل على جديد المقالات فوراً!
-        <a href="tg://resolve?domain=iiollr" target="_blank">انضم الآن <i class="fab fa-telegram-plane"></i></a>
+        <div>
+            انضم إلى قناة مجلة الملتقى على تليجرام لتحصل على جديد المقالات فوراً!
+            <a href="tg://resolve?domain=iiollr" target="_blank" class="join-btn">
+                <i class="fab fa-telegram-plane"></i> اضغط للإنضمام إلى القناة
+            </a>
+        </div>
         <button id="close-banner-btn" aria-label="إغلاق الإعلان"><i class="fas fa-times"></i></button>
     </div>
 </body>
