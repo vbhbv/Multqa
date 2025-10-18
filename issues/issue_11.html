@@ -12,29 +12,31 @@
     <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@700&family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
     
     <style>
-        /* ==================================================== */
-        /* تصحيحات التنسيق العام والجمالية المطلوبة */
-        /* ==================================================== */
+        /* تطبيق الخط الفخم على العنوان الرئيسي (إذا لم يعمل في style.css) */
         h1 {
-            font-family: 'Aref Ruqaa', serif;
-            text-align: center; 
+            font-family: var(--font-heading);
             color: var(--color-primary); 
+            text-align: center;
             font-size: 3.5rem;
             margin-bottom: 20px;
         }
 
-        /* تنسيق البطاقة المميزة والشريط الأحمر */
+        /* تنسيق البطاقة المميزة (الشريط الأحمر) */
         .featured-card {
-            border: 2px solid var(--color-dark-red);
-            box-shadow: 0 6px 20px rgba(255, 0, 0, 0.3);
+            border: 2px solid var(--color-accent); /* استخدام لون التمييز المرجاني */
+            box-shadow: 0 6px 20px rgba(218, 44, 67, 0.3); 
             position: relative;
         }
+        
+        /* الشريط الأحمر/المرجاني على جانب محتوى المقال المميز */
         .featured-card .card-content {
-            border-right: 7px solid var(--color-dark-red); /* الشريط الأحمر المطلوب لمقال مجول */
+            border-right: 7px solid var(--color-accent); 
             padding-right: 20px;
         }
+
+        /* شارة "مميزة" */
         .featured-tag {
-            background-color: var(--color-dark-red);
+            background-color: var(--color-accent);
             color: white;
             padding: 5px 12px;
             font-size: 0.9rem;
@@ -46,12 +48,8 @@
             border-radius: 5px;
             z-index: 10;
         }
-        /* تحسين شكل الـ Card لتجنب الطول المفرط وعرض سطرين للوصف */
-        .card-content h3 {
-            margin-top: 10px;
-            margin-bottom: 10px;
-            font-size: 1.5rem;
-        }
+
+        /* تصحيح طول البطاقات المفرط (لضمان ظهور سطرين فقط من الوصف) */
         .card-content p {
             font-size: 0.95rem;
             margin-bottom: 15px;
@@ -62,50 +60,62 @@
             -webkit-line-clamp: 2; 
             -webkit-box-orient: vertical;
         }
-
-        /* ==================================================== */
-        /* التجاوز الحاسم للاستجابة (Responsive Grid Fix) */
-        /* ==================================================== */
-        @media (max-width: 768px) {
-            /* إجبار الـ grid على عمود واحد في وضع الهاتف لظهور البطاقات */
-            .article-grid {
-                display: grid;
-                grid-template-columns: 1fr; /* عمود واحد فقط على الهاتف */
-                gap: 20px; /* مسافة بين البطاقات */
-                padding: 0 10px;
-            }
-            /* التأكد من أن البطاقة المميزة لا تمتد على عمودين في الهاتف */
-            .featured-card {
-                grid-column: 1 / span 1 !important; /* إجبارها على عمود واحد */
-            }
-            /* تصغير حجم الخط للعناوين في الهاتف */
-            h1 {
-                font-size: 2.5rem;
+        
+        /* جعل البطاقة المميزة تمتد على عمودين في الشاشات الكبيرة */
+        @media (min-width: 801px) {
+             .featured-card {
+                grid-column: 1 / span 2; 
             }
         }
         
-        /* ==================================================== */
-        /* إعادة تصميم شريط أيقونات التواصل الاجتماعي في Footer */
-        /* ==================================================== */
-        .footer-social-icons {
+        /* ===================================================
+           تنسيق شريط تليجرام الإعلاني
+           =================================================== */
+        #telegram-banner {
+            position: fixed;
+            bottom: -80px; /* مخفي في البداية */
+            left: 0;
+            width: 100%;
+            background-color: #0088CC; /* لون تليجرام الأزرق */
+            color: white;
+            padding: 15px 30px;
+            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 5000;
             display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        .footer-social-icons a {
-            color: var(--color-primary); /* لون الأيقونات */
-            font-size: 1.5rem;
-            transition: color 0.3s;
-        }
-        .footer-social-icons a:hover {
-            color: var(--color-accent); /* لون عند المرور */
-        }
-        /* للتأكد من أن الـ Footer يستوعب الأيقونات */
-        .footer-content {
-            display: flex;
-            flex-direction: column;
+            justify-content: center;
             align-items: center;
+            transition: bottom 0.5s ease-out;
             text-align: center;
+            font-size: 1.1rem;
+        }
+
+        #telegram-banner.show {
+            bottom: 0; /* يظهر عندما يتم تفعيل الكلاس show بالـ JS */
+        }
+
+        #telegram-banner a {
+            color: var(--color-secondary); /* ذهبي للمرئية */
+            font-weight: 700;
+            margin-right: 15px;
+            text-decoration: underline;
+        }
+        
+        #close-banner-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            margin-right: 20px;
+            cursor: pointer;
+            position: absolute;
+            left: 10px;
+        }
+        
+        @media (max-width: 600px) {
+            #telegram-banner {
+                font-size: 0.9rem;
+                padding: 15px 10px 15px 50px; /* مساحة لزر الإغلاق */
+            }
         }
     </style>
 </head>
@@ -122,15 +132,15 @@
     <main class="container" style="padding-top: 50px; min-height: 80vh;">
         
         <h1>فهرس العدد الحادي عشر: فلسفة التجاوز</h1>
-        <p style="text-align: center; margin-bottom: 50px; font-size: 1.2rem; color: var(--color-text-secondary);">إصدار: ربيع 2025 - عدد شامل للمقالات الجريئة والنقد الاجتماعي</p>
+        <p style="text-align: center; margin-bottom: 50px; font-size: 1.2rem; color: var(--color-text-main);">إصدار: ربيع 2025 - عدد شامل للمقالات الجريئة والنقد الاجتماعي</p>
 
         <div class="article-grid">
             
-            <article class="card color-deep-blue featured-card"> 
+            <article class="card color-coral featured-card"> 
                 <span class="featured-tag"><i class="fas fa-star"></i> مميزة</span>
                 <div class="card-content">
-                    <span class="card-category" style="color: var(--color-dark-red);"><i class="fas fa-flask"></i> دراسة نفسية اجتماعية</span>
-                    <h3 style="color: var(--color-dark-red);">العلل المستترة في جسد المجتمع</h3>
+                    <span class="card-category" style="color: var(--color-accent);"><i class="fas fa-flask"></i> دراسة نفسية اجتماعية</span>
+                    <h3 style="color: var(--color-accent);">العلل المستترة في جسد المجتمع</h3>
                     <p>مقالة تحليلية عميقة لمجول شعلان الحيالي تتناول الانفصام الجماعي وكيف يصبح الجمال ضرورة للبقاء الأخلاقي.</p>
                     <a href="article_8.html" class="read-link">اقرأ المقال المميز</a>
                 </div>
@@ -163,7 +173,7 @@
                 </div>
             </article>
 
-            <article class="card color-deep-blue"> 
+            <article class="card color-emerald"> 
                 <div class="card-content">
                     <span class="card-category"><i class="fas fa-graduation-cap"></i> نص ساخر</span>
                     <h3>طالبٌ في الكليةِ مطحون</h3>
@@ -172,7 +182,7 @@
                 </div>
             </article>
 
-            <article class="card color-dark-red"> 
+            <article class="card color-coral"> 
                 <div class="card-content">
                     <span class="card-category"><i class="fas fa-heart"></i> شعر عمودي</span>
                     <h3>دهرٌ يُمني العاشقين</h3>
@@ -181,7 +191,7 @@
                 </div>
             </article>
             
-            <article class="card color-indigo"> 
+            <article class="card color-gold"> 
                 <div class="card-content">
                     <span class="card-category"><i class="fas fa-brain"></i> تأملات وجودية</span>
                     <h3>أنا والحبل</h3>
@@ -190,7 +200,7 @@
                 </div>
             </article>
             
-            <article class="card color-dark-gray"> 
+            <article class="card color-emerald"> 
                 <div class="card-content">
                     <span class="card-category"><i class="fas fa-chart-line"></i> تحليل إجتماعي</span>
                     <h3>طغيان الغني على الفقير: العنف البنيوي الصامت</h3>
@@ -213,10 +223,14 @@
     <footer class="footer">
         <div class="container footer-content">
             <p class="footer-logo">الملتقى</p>
-            
-            <div class="footer-social-icons">
+            <div class="footer-links">
+                <a href="#">سياسة الخصوصية</a>
+                <a href="#">تواصل معنا</a>
+                <a href="#">انضم إلينا</a>
+            </div>
+            <div class="social-icons">
+                <a href="tg://resolve?domain=iiollr" target="_blank" aria-label="قناة تليجرام للمجلة"><i class="fab fa-telegram-plane"></i></a>
                 <a href="#" aria-label="تويتر/إكس"><i class="fab fa-x-twitter"></i></a>
-                <a href="#" aria-label="فيسبوك"><i class="fab fa-facebook-f"></i></a>
                 <a href="#" aria-label="إنستغرام"><i class="fab fa-instagram"></i></a>
             </div>
         </div>
@@ -224,5 +238,11 @@
             <p>&copy; 2025 مجلة الملتقى الثقافي للكتاب. جميع الحقوق محفوظة.</p>
         </div>
     </footer>
+    
+    <div id="telegram-banner">
+        انضم إلى قناة مجلة الملتقى على تليجرام لتحصل على جديد المقالات فوراً!
+        <a href="tg://resolve?domain=iiollr" target="_blank">انضم الآن <i class="fab fa-telegram-plane"></i></a>
+        <button id="close-banner-btn" aria-label="إغلاق الإعلان"><i class="fas fa-times"></i></button>
+    </div>
 </body>
 </html>
