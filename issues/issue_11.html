@@ -12,19 +12,36 @@
     <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@700&family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
     
     <style>
+        /* تأكيد نمط العنوان للخط العربي */
+        h1 {
+            font-family: 'Aref Ruqaa', serif;
+            text-align: center; 
+            color: var(--color-primary); 
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+
+        /* تنسيق خاص للبطاقة المميزة */
         .featured-card {
             border: 2px solid var(--color-dark-red);
-            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.2);
+            box-shadow: 0 6px 20px rgba(255, 0, 0, 0.3); /* ظل أوضح */
             position: relative;
+            /* للتأكد من أنها تمتد على عمودين في الـ Grid */
+            grid-column: 1 / span 2; 
         }
+        
+        /* الشريط الأحمر على جانب محتوى المقال المميز */
         .featured-card .card-content {
-            border-right: 5px solid var(--color-dark-red);
+            border-right: 7px solid var(--color-dark-red); /* شريط أكثر سماكة */
+            padding-right: 20px;
         }
+
+        /* شارة "مميزة" */
         .featured-tag {
             background-color: var(--color-dark-red);
             color: white;
-            padding: 4px 10px;
-            font-size: 0.8rem;
+            padding: 5px 12px;
+            font-size: 0.9rem;
             font-weight: 700;
             position: absolute;
             top: 0;
@@ -33,13 +50,23 @@
             border-radius: 5px;
             z-index: 10;
         }
-        /* تصحيح نمط العنوان الذي ظهر في الصورة بشكل غير منسق */
-        h1 {
-            font-family: 'Aref Ruqaa', serif; /* استخدام الخط العربي الجميل */
-            text-align: center; 
-            color: var(--color-primary); 
-            font-size: 3.5rem;
-            margin-bottom: 20px;
+
+        /* تحسين شكل الـ Card لتجنب الطول المفرط */
+        .card-content h3 {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+        .card-content p {
+            font-size: 0.95rem; /* تصغير الوصف لتقليل طول البطاقة */
+            margin-bottom: 15px;
+            /* تحديد ارتفاع للوصف لضمان الاتساق */
+            height: 40px; 
+            overflow: hidden; 
+            text-overflow: ellipsis; 
+            display: -webkit-box;
+            -webkit-line-clamp: 2; /* عرض سطرين فقط */
+            -webkit-box-orient: vertical;
         }
     </style>
 </head>
@@ -60,7 +87,7 @@
 
         <div class="article-grid">
             
-            <article class="card color-deep-blue featured-card" style="grid-column: 1 / span 2;"> 
+            <article class="card color-deep-blue featured-card"> 
                 <span class="featured-tag"><i class="fas fa-star"></i> مميزة</span>
                 <div class="card-content">
                     <span class="card-category" style="color: var(--color-dark-red);"><i class="fas fa-flask"></i> دراسة نفسية اجتماعية</span>
