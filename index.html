@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>مجلة الملتقى الثقافي للكتاب - تصميم خطي فاخر</title>
+    <title>مجلة الملتقى الثقافي للكتاب</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@700&family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -14,14 +18,14 @@
     <header class="header">
         <div class="container nav-content">
             <div class="logo">
-                <a href="index.html">الملتقى <span>الثقافي</span></a>
+                <a href="index.html">الـملتقى</a>
             </div>
             
-            <div style="display: flex; align-items: center; gap: 15px;">
-                <button id="dark-mode-toggle" class="theme-toggle" aria-label="تبديل الوضع">
+            <div class="nav-actions">
+                <button id="dark-mode-toggle" class="nav-icon" aria-label="تبديل الوضع">
                     <i class="fas fa-moon"></i>
                 </button>
-                <button id="hamburger-btn" class="hamburger-menu" aria-label="فتح القائمة">
+                <button id="hamburger-btn" class="nav-icon" aria-label="فتح القائمة">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
@@ -32,56 +36,82 @@
         <button id="close-menu-btn" class="close-btn" aria-label="إغلاق القائمة">
             <i class="fas fa-times"></i>
         </button>
-        <a href="index.html"><i class="fas fa-home"></i> الرئيسية</a>
-        <a href="issues.html"><i class="fas fa-book-open"></i> الأعداد المنشورة</a>
-        <a href="about.html"><i class="fas fa-info-circle"></i> حول المجلة</a>
+        <a href="index.html"><i class="fas fa-home"></i> الصفحة الرئيسية</a>
+        <a href="issues.html"><i class="fas fa-feather-alt"></i> الأعداد والمقالات</a>
+        <a href="archive.html"><i class="fas fa-archive"></i> الأرشيف</a>
+        <a href="about.html"><i class="fas fa-user-friends"></i> فريق التحرير</a>
     </nav>
 
     <main class="container">
-        <section class="intro-section">
-            <h1>مجلة الملتقى الثقافي للكتاب</h1>
-            <p>
-                منذ عام 2020، نضيء على عوالم الفكر والنقد المعاصر. نحن منصة عربية مستقلة مخصصة لتقديم أرقى المقالات والدراسات الأدبية والفكرية، بعيداً عن المألوف.
-            </p>
-            <a href="#latest-issue" class="cta-btn"><i class="fas fa-arrow-down"></i> تصفح العدد الأخير</a>
+        <section class="cultural-stage">
+            <div class="stage-content">
+                <h1>مـنـبـر الـفـكـر والنـقـد الـمـعـاصـر</h1>
+                <p>
+                    مساحة مستقلة لإثراء الوعي الثقافي. استكشف مقالات معمقة ودراسات أدبية وفكرية تضيء جوانب غير مطروقة من المشهد المعرفي العربي.
+                </p>
+                <a href="#article-showcase" class="cta-button">ابدأ القراءة الآن <i class="fas fa-angle-left"></i></a>
+            </div>
         </section>
         
-        <section class="latest-issue" id="latest-issue"> 
-            <h2 style="text-align: center; margin-bottom: 40px; font-size: 2.5rem;">مقالات مختارة من العدد الأخير</h2>
+        <section class="article-showcase" id="article-showcase"> 
+            <h2 class="section-title">✨ رؤى من العدد الأخير</h2>
             
             <div class="article-grid">
                 
-                <article class="card">
+                <article class="card color-emerald">
                     <div class="card-content">
+                        <span class="card-category"><i class="fas fa-pen-nib"></i> دراسات أدبية</span>
                         <h3>فلسفة المكان في الأدب السردي الحديث</h3>
-                        <p style="color: var(--color-text-secondary);">دراسة معمقة للمفاهيم الجغرافية وتأثيرها على بناء الشخصيات الروائية.</p>
-                        <a href="issues/issue_11/article_1.html" class="btn-read">اقرأ المقال <i class="fas fa-arrow-left"></i></a>
+                        <p>دراسة معمقة للمفاهيم الجغرافية وتأثيرها على بناء الشخصيات الروائية.</p>
+                        <a href="issues/issue_11/article_1.html" class="read-link">اقرأ المقال</a>
                     </div>
                 </article>
 
-                <article class="card">
+                <article class="card color-coral">
                     <div class="card-content">
+                        <span class="card-category"><i class="fas fa-eye"></i> نقد ومراجعات</span>
                         <h3>مراجعة نقدية: رواية "الزمن المهجور"</h3>
-                        <p style="color: var(--color-text-secondary);">تقييم شامل لآخر أعمال الكاتب علي المازني، وتأثيره على المشهد الأدبي.</p>
-                        <a href="issues/issue_11/article_2.html" class="btn-read">اقرأ المقال <i class="fas fa-arrow-left"></i></a>
+                        <p>تقييم شامل لآخر أعمال الكاتب علي المازني، وتأثيره على المشهد الأدبي.</p>
+                        <a href="issues/issue_11/article_2.html" class="read-link">اقرأ المقال</a>
                     </div>
                 </article>
                 
-                <article class="card" style="border-right-color: var(--color-secondary);">
+                <article class="card color-gold">
                     <div class="card-content">
-                        <h3 style="color: var(--color-secondary);">فهرس العدد كاملاً</h3>
-                        <p style="color: var(--color-text-secondary);">اكتشف بقية محتوى العدد الأخير، بما في ذلك قصائد ونصوص حصرية.</p>
-                        <a href="issues/issue_11/index.html" class="btn-read" style="background-color: var(--color-primary);">تصفح الفهرس <i class="fas fa-list-alt"></i></a>
+                        <span class="card-category"><i class="fas fa-lightbulb"></i> مقالات فكرية</span>
+                        <h3>جدلية الهوية في زمن العولمة الرقمية</h3>
+                        <p>تأمل في تحولات الوعي الجمعي والفردي أمام تحديات التقنية الحديثة.</p>
+                        <a href="issues/issue_11/article_3.html" class="read-link">اقرأ المقال</a>
                     </div>
                 </article>
                 
+            </div>
+            
+            <div class="cta-secondary">
+                <p>هل فاتك عدد؟ اكتشف كنوز الأرشيف الثقافي للمجلة.</p>
+                <a href="archive.html" class="secondary-btn"><i class="fas fa-chevron-left"></i> تصفح الأرشيف</a>
             </div>
         </section>
 
     </main>
 
     <footer class="footer">
-        <p>&copy; 2025 مجلة الملتقى الثقافي للكتاب | بتصميم خطي عصري.</p>
+        <div class="container footer-content">
+            <p class="footer-logo">الملتقى</p>
+            <div class="footer-links">
+                <a href="#">سياسة الخصوصية</a>
+                <a href="#">تواصل معنا</a>
+                <a href="#">انضم إلينا</a>
+            </div>
+            <div class="social-icons">
+                <a href="#" aria-label="تويتر/إكس"><i class="fab fa-x-twitter"></i></a>
+                <a href="#" aria-label="فيسبوك"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="إنستغرام"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 مجلة الملتقى الثقافي للكتاب. جميع الحقوق محفوظة.</p>
+        </div>
     </footer>
 
     <script src="script.js"></script>
