@@ -1,12 +1,259 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
 <head>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مجلة الملتقى الثقافي للكتاب</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
-<body>
-    <button id="dark-mode-toggle" class="theme-toggle" aria-label="الوضع الليلي">
-        <i class="fas fa-moon"></i>
-    </button>
 
-    <script src="assets/js/script.js"></script>
-    <script src="assets/js/dark_mode.js"></script>
-</body>
+    <style>
+        /* 1. المتغيرات والقيم الافتراضية (الوضع النهاري) */
+        :root {
+            --color-primary: #007bff; /* أزرق مميز */
+            --color-secondary: #6c757d;
+            --color-background: #f8f9fa;
+            --color-text: #212529;
+            --color-card-bg: #ffffff;
+            --color-header-bg: #ffffff;
+            --color-border: #dee2e6;
+            --font-family-main: 'Arial', sans-serif;
+            --transition-speed: 0.3s;
+        }
+
+        /* 2. أنماط الوضع الليلي (يتم تطبيقها على وسم <body>) */
+        body.dark-mode {
+            --color-primary: #bb86fc; /* بنفسجي فاتح */
+            --color-secondary: #b0b0b0;
+            --color-background: #121212;
+            --color-text: #e0e0e0;
+            --color-card-bg: #1e1e1e;
+            --color-header-bg: #1f1f1f;
+            --color-border: #3a3a3a;
+        }
+
+        /* 3. الأنماط العامة */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family-main);
+            background-color: var(--color-background);
+            color: var(--color-text);
+            line-height: 1.6;
+            transition: background-color var(--transition-speed), color var(--transition-speed);
+        }
+
+        /* 4. شريط التنقل (Header/Navbar) */
+        .header {
+            background-color: var(--color-header-bg);
+            border-bottom: 1px solid var(--color-border);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: background-color var(--transition-speed);
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            color: var(--color-primary);
+        }
+
+        .nav-menu a {
+            color: var(--color-text);
+            text-decoration: none;
+            margin-right: 20px;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--color-primary);
+        }
+        
+        /* 5. زر الوضع الليلي */
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--color-text);
+            font-size: 1.5rem;
+            padding: 5px;
+            transition: color 0.2s;
+        }
+        .theme-toggle:hover {
+            color: var(--color-primary);
+        }
+        
+        /* 6. المحتوى الرئيسي */
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        .hero-section {
+            background-color: var(--color-primary);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 40px;
+        }
+
+        .article-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background-color: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-content h3 {
+            color: var(--color-primary);
+            margin-bottom: 10px;
+        }
+
+        /* 7. Footer */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            border-top: 1px solid var(--color-border);
+            color: var(--color-secondary);
+        }
+
+        /* 8. تصميم متجاوب (Responsive Design) */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                padding: 15px;
+            }
+            .nav-menu {
+                margin-top: 15px;
+            }
+            .nav-menu a {
+                display: block;
+                margin: 5px 0;
+            }
+            .theme-toggle {
+                margin-top: 10px;
+            }
+        }
+    </style>
+    </head>
+<body>
+
+    <header class="header">
+        <div class="logo">
+            <h1>مجلة الملتقى الثقافي</h1>
+        </div>
+        <nav class="nav-menu">
+            <a href="index.html">الرئيسية</a>
+            <a href="issues.html">الأعداد المنشورة</a>
+            <a href="about.html">حول المجلة</a>
+        </nav>
+        <button id="dark-mode-toggle" class="theme-toggle" aria-label="الوضع الليلي">
+            <i class="fas fa-moon"></i>
+        </button>
+    </header>
+
+    <main class="container">
+        <section class="hero-section">
+            <h2>مرحباً في عالم الثقافة والأدب</h2>
+            <p>منصة تجمع نخبة الكتاب والمفكرين في العالم العربي.</p>
+        </section>
+
+        <section class="latest-issue">
+            <h2>العدد الأخير: الحادي عشر</h2>
+            <div class="article-grid">
+                <article class="card">
+                    <div class="card-content">
+                        <h3><a href="issues/issue_11/article_1.html" style="text-decoration: none; color: inherit;">مقال العدد: فن السرد في الرواية الحديثة</a></h3>
+                        <p>بقلم: أ.د. فواز العابد</p>
+                        <p class="text-secondary">#أدب #نقد</p>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card-content">
+                        <h3><a href="issues/issue_11/article_2.html" style="text-decoration: none; color: inherit;">تأملات في الفلسفة المعاصرة</a></h3>
+                        <p>بقلم: فاطمة الزهراء</p>
+                        <p class="text-secondary">#فلسفة #فكر</p>
+                    </div>
+                </article>
+                </div>
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="issues/issue_11/index.html" class="nav-menu-button" style="padding: 10px 20px; background-color: var(--color-primary); color: white; text-decoration: none; border-radius: 5px;">تصفح العدد الحادي عشر كاملاً</a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 مجلة الملتقى الثقافي للكتاب. جميع الحقوق محفوظة.</p>
+    </footer>
+
+    <script>
+        // أكواد جافاسكريبت احترافية للوضع الليلي والوظائف العامة
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleButton = document.getElementById('dark-mode-toggle');
+            const body = document.body;
+            const localStorageKey = 'theme';
+
+            // 1. وظيفة تطبيق الثيم
+            const applyTheme = (theme) => {
+                if (theme === 'dark') {
+                    body.classList.add('dark-mode');
+                    toggleButton.innerHTML = '<i class="fas fa-sun"></i>';
+                    localStorage.setItem(localStorageKey, 'dark');
+                } else {
+                    body.classList.remove('dark-mode');
+                    toggleButton.innerHTML = '<i class="fas fa-moon"></i>';
+                    localStorage.setItem(localStorageKey, 'light');
+                }
+            };
+
+            // 2. التحقق من التفضيل السابق أو تفضيل النظام
+            const savedTheme = localStorage.getItem(localStorageKey);
+            const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+            if (savedTheme) {
+                applyTheme(savedTheme);
+            } else if (prefersDark) {
+                applyTheme('dark');
+            } else {
+                applyTheme('light');
+            }
+
+            // 3. وظيفة التبديل عند النقر
+            if (toggleButton) {
+                toggleButton.addEventListener('click', () => {
+                    const currentTheme = body.classList.contains('dark-mode') ? 'dark' : 'light';
+                    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                    applyTheme(newTheme);
+                });
+            }
+        });
+    </script>
+    </body>
+</html>
