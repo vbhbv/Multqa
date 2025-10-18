@@ -1,30 +1,108 @@
 /*
- * مجلة الملتقى - تعديل الخط والتصميم (V7)
+ * مجلة الملتقى الثقافي للكتاب - تصميم خطي وأنيق (V7)
+ * الألوان: تركوازي وذهبي دافئ. الخطوط: Reem Kufi و Noto Naskh.
  */
 
 /* ===================================================
    1. الخطوط والمتغيرات الأساسية (تحديث الخط)
    =================================================== */
-/* تحديث الخطوط لاستخدام Reem Kufi بدلاً من Aref Ruqaa للعنوان */
 @import url('https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@700&family=Noto+Naskh+Arabic:wght@400;700&display=swap');
+/* الخطوط مستوردة هنا */
 
 :root {
-    /* ... (الألوان تبقى كما هي) ... */
+    /* الألوان الدافئة الجديدة */
+    --color-primary: #008080;      /* لون تركوازي (Teal) عميق */
+    --color-secondary: #FFD700;    /* لون ذهبي ساطع (للفخامة) */
+    --color-accent: #E94F37;       /* لون ناري للتفاعل */
+    --color-background: #FAFAFA;   /* خلفية فاتحة دافئة */
+    --color-surface: #FFFFFF;      /* خلفية البطاقات والأجزاء الرئيسية */
+    --color-text-main: #3C4858;    /* نص رمادي داكن (مريح) */
+    --color-text-secondary: #6B7A8F;
+    --color-border: #E5E5E5;
 
-    /* الخطوط الجديدة: Reem Kufi لعنوان المجلة */
-    --font-logo: 'Reem Kufi', sans-serif; /* خط عريض وخطاطي */
+    /* الخطوط */
+    --font-logo: 'Reem Kufi', sans-serif; /* خط عريض وخطاطي لاسم المجلة */
     --font-heading: 'Noto Naskh Arabic', serif;
     --font-body: 'Noto Naskh Arabic', serif;
 
-    /* ... (بقية المتغيرات تبقى كما هي) ... */
+    /* الانتقال */
+    --transition-speed: 0.5s;
+    --menu-width: 300px; /* عرض القائمة الجانبية */
 }
 
 /* ===================================================
-   2. شريط التنقل (تطبيق الخط الجديد)
+   2. الوضع الليلي (Dark Mode) - تركيز على التركواز الداكن
    =================================================== */
+body.dark-mode {
+    --color-primary: #4DC1C1;
+    --color-secondary: #FFEA80;
+    --color-accent: #FF6B52;
+    --color-background: #1A1A1A;
+    --color-surface: #262626;
+    --color-text-main: #F0F0F0;
+    --color-text-secondary: #B0B0B0;
+    --color-border: #444444;
+}
+
+/* ===================================================
+   3. الأنماط العامة وإعادة الضبط
+   =================================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--color-background);
+    color: var(--color-text-main);
+    line-height: 1.7;
+    direction: rtl;
+    transition: background-color var(--transition-speed), color var(--transition-speed), opacity 1s ease-in;
+    opacity: 0; /* يبدأ مخفياً (لتأثير التلاشي بالـ JS) */
+}
+
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 25px;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    color: var(--color-text-main);
+    margin-bottom: 0.7em;
+}
+
+/* ===================================================
+   4. شريط التنقل وزر الهامبرغر
+   =================================================== */
+.header {
+    background-color: var(--color-surface);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 2000;
+}
+
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* اسم المجلة بالخط المزخرف الفاخر (Reem Kufi) */
 .logo a {
     font-family: var(--font-logo);
-    font-size: 2.2rem; /* تصغير حجم اللوجو في الهيدر قليلاً ليزيد أناقته */
+    font-size: 2.2rem;
     color: var(--color-primary);
     line-height: 1.2;
     font-weight: 700;
@@ -34,11 +112,74 @@
     color: var(--color-secondary);
 }
 
+/* زر الهمبرغر والوضع الليلي */
+.hamburger-menu, .theme-toggle {
+    display: flex;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.8rem;
+    color: var(--color-primary);
+    transition: color 0.3s, transform 0.3s;
+    padding: 10px;
+    border-radius: 5px;
+}
+.hamburger-menu:hover, .theme-toggle:hover {
+    color: var(--color-secondary);
+}
+
 /* ===================================================
-   3. القسم التعريفي الجديد (Intro Section)
+   5. القائمة الجانبية العصرية (Sidebar) - إصلاح الخلل
+   =================================================== */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: calc(-1 * var(--menu-width)); /* **الإصلاح الأساسي: إخفاء كلي** */
+    width: var(--menu-width);
+    height: 100%;
+    background-color: var(--color-surface);
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.2);
+    padding: 40px 20px;
+    transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 3000;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.sidebar.open {
+    right: 0;
+}
+
+.sidebar a {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    padding: 15px 0;
+    width: 100%;
+    border-bottom: 1px dashed var(--color-border);
+    color: var(--color-text-main);
+    transition: background-color 0.3s;
+}
+
+.close-btn {
+    align-self: flex-end;
+    background: var(--color-accent);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 1.2rem;
+    line-height: 1;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+/* ===================================================
+   6. القسم التعريفي الجديد (Intro Section)
    =================================================== */
 .intro-section {
-    padding: 60px 0; /* تصغير الهوامش مقارنة بالـ Hero Section */
+    padding: 60px 0;
     margin: 30px auto;
     text-align: center;
     background-color: var(--color-surface);
@@ -47,8 +188,8 @@
 }
 
 .intro-section h1 {
-    font-family: var(--font-logo);
-    font-size: 3rem; /* اسم المجلة بحجم كبير وخطاطي في الواجهة */
+    font-family: var(--font-logo); /* اسم المجلة بالخط الخطاطي */
+    font-size: 3rem; 
     color: var(--color-primary);
     margin-bottom: 5px;
 }
@@ -58,11 +199,11 @@
     color: var(--color-text-secondary);
     max-width: 800px;
     margin: 0 auto 20px auto;
-    line-height: 1.8;
 }
 
 .intro-section .cta-btn {
     display: inline-block;
+    font-family: var(--font-body); /* توحيد الخط هنا */
     padding: 12px 30px;
     background-color: var(--color-accent);
     color: white;
@@ -70,12 +211,132 @@
     font-weight: 700;
     transition: all 0.3s;
 }
-.intro-section .cta-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+
+/* ===================================================
+   7. تصميم البطاقات (Article Cards)
+   =================================================== */
+.article-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 35px;
+    padding: 50px 0;
+}
+
+.card {
+    background-color: var(--color-surface);
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border-right: 8px solid var(--color-primary);
+    transform: translateX(30px);
+    opacity: 0;
+}
+
+.card:hover {
+    transform: translateX(0px) scale(1.02);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.card-content {
+    padding: 25px;
+}
+
+/* زر القراءة - توحيد الخط */
+.btn-read {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: var(--color-accent);
+    color: white;
+    border-radius: 5px;
+    font-family: var(--font-body); /* **توحيد خط الأزرار** */
+    font-size: 1.1rem;
+    font-weight: 700;
+    transition: background-color 0.3s, transform 0.3s;
+    position: relative; /* لـ Tilt Effect و Aura Effect */
+    overflow: hidden;
 }
 
 /* ===================================================
-   4. حذف خصائص Hero القديمة غير المستخدمة
+   8. تأثيرات الحركة والـ JS
    =================================================== */
-/* تم إزالة Hero Section من HTML، لذلك لا نحتاج إلى خصائصه هنا */
+.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* حركة Pulse لزر الهامبرغر */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* تأثير الضوء على الأزرار (Aura Effect) */
+.btn-read:after, .cta-btn:after {
+    content: '';
+    position: absolute;
+    top: var(--y, 50%);
+    left: var(--x, 50%);
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.1s;
+}
+.btn-read:hover:after, .cta-btn:hover:after {
+    transform: translate(-50%, -50%) scale(5);
+    opacity: 0;
+    transition: transform 0.5s ease-out, opacity 0.5s;
+}
+
+/* ===================================================
+   9. التذييل (Footer)
+   =================================================== */
+.footer {
+    text-align: center;
+    padding: 50px;
+    margin-top: 80px;
+    border-top: 1px solid var(--color-border);
+    background-color: var(--color-surface);
+    color: var(--color-text-secondary);
+    font-size: 1rem;
+    transition: opacity 0.3s;
+    opacity: 0.7; /* إخفاء جزئي حتى يتم التمرير */
+}
+
+/* ===================================================
+   10. التصميم المتجاوب (Mobile Fixes)
+   =================================================== */
+@media (max-width: 600px) {
+    .container {
+        padding: 0 15px;
+    }
+    .logo a {
+        font-size: 1.8rem;
+    }
+    .intro-section h1 {
+        font-size: 2.5rem;
+    }
+    .intro-section p {
+        font-size: 1rem;
+    }
+    .sidebar {
+        width: 100%; /* القائمة تملأ الشاشة بالكامل في الهواتف */
+        right: -100%; /* تأكيد الإخفاء التام */
+    }
+    
+    /* تغيير حركة البطاقات لتكون عمودية فقط على الهواتف */
+    .card {
+        transform: translateY(20px);
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .card.visible {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    .card:hover {
+        transform: translateY(-5px) scale(1.02);
+    }
+}
