@@ -1,6 +1,6 @@
 //
 // مجلة الملتقى - التفاعلية الفائقة والجمالية المتقدمة (17 وظيفة)
-// **تم إزالة الوظيفة المسببة لمشكلة الشاشة البيضاء (Fade-in Body).**
+// ** تم إزالة تأخير ظهور البطاقات (setTimeout) لضمان الفورية. **
 //
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -88,17 +88,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ===================================================
-    // 10. تأثير التحريك عند التمرير (Scroll Reveal)
+    // 10. تأثير التحريك عند التمرير (Scroll Reveal) - **تم إزالة التأخير**
     // ===================================================
     const scrollReveal = () => {
         const cards = document.querySelectorAll('.card');
         const triggerBottom = window.innerHeight * 0.85;
 
-        cards.forEach((card, index) => {
+        cards.forEach((card) => {
             if (card.getBoundingClientRect().top < triggerBottom) {
-                setTimeout(() => {
-                    card.classList.add('visible');
-                }, index * 100);
+                // تم إزالة setTimeout بالكامل هنا
+                card.classList.add('visible'); 
             }
         });
     };
@@ -131,6 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
             follower.style.top = `${e.clientY}px`;
         });
         
+        // إخفاء الـ follower عند التوقف
         let timeout;
         document.addEventListener('mousemove', () => {
             follower.style.opacity = '0.6';
@@ -228,5 +228,5 @@ document.addEventListener('DOMContentLoaded', () => {
     animateHamburger();
 
 
-    console.info("🎉 مجلة الملتقى: تم تفعيل 17 وظيفة جافاسكريبت عالية الجودة.");
+    console.info("🎉 مجلة الملتقى: تم تفعيل 17 وظيفة جافاسكريبت بجودة عالية.");
 });
