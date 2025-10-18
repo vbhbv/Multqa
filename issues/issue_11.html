@@ -12,7 +12,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@700&family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
     
     <style>
-        /* تأكيد نمط العنوان للخط العربي */
+        /* ==================================================== */
+        /* تصحيحات التنسيق العام والجمالية المطلوبة */
+        /* ==================================================== */
         h1 {
             font-family: 'Aref Ruqaa', serif;
             text-align: center; 
@@ -21,22 +23,16 @@
             margin-bottom: 20px;
         }
 
-        /* تنسيق خاص للبطاقة المميزة */
+        /* تنسيق البطاقة المميزة والشريط الأحمر */
         .featured-card {
             border: 2px solid var(--color-dark-red);
-            box-shadow: 0 6px 20px rgba(255, 0, 0, 0.3); /* ظل أوضح */
+            box-shadow: 0 6px 20px rgba(255, 0, 0, 0.3);
             position: relative;
-            /* للتأكد من أنها تمتد على عمودين في الـ Grid */
-            grid-column: 1 / span 2; 
         }
-        
-        /* الشريط الأحمر على جانب محتوى المقال المميز */
         .featured-card .card-content {
-            border-right: 7px solid var(--color-dark-red); /* شريط أكثر سماكة */
+            border-right: 7px solid var(--color-dark-red); /* الشريط الأحمر المطلوب لمقال مجول */
             padding-right: 20px;
         }
-
-        /* شارة "مميزة" */
         .featured-tag {
             background-color: var(--color-dark-red);
             color: white;
@@ -50,23 +46,66 @@
             border-radius: 5px;
             z-index: 10;
         }
-
-        /* تحسين شكل الـ Card لتجنب الطول المفرط */
+        /* تحسين شكل الـ Card لتجنب الطول المفرط وعرض سطرين للوصف */
         .card-content h3 {
             margin-top: 10px;
             margin-bottom: 10px;
             font-size: 1.5rem;
         }
         .card-content p {
-            font-size: 0.95rem; /* تصغير الوصف لتقليل طول البطاقة */
+            font-size: 0.95rem;
             margin-bottom: 15px;
-            /* تحديد ارتفاع للوصف لضمان الاتساق */
             height: 40px; 
             overflow: hidden; 
             text-overflow: ellipsis; 
             display: -webkit-box;
-            -webkit-line-clamp: 2; /* عرض سطرين فقط */
+            -webkit-line-clamp: 2; 
             -webkit-box-orient: vertical;
+        }
+
+        /* ==================================================== */
+        /* التجاوز الحاسم للاستجابة (Responsive Grid Fix) */
+        /* ==================================================== */
+        @media (max-width: 768px) {
+            /* إجبار الـ grid على عمود واحد في وضع الهاتف لظهور البطاقات */
+            .article-grid {
+                display: grid;
+                grid-template-columns: 1fr; /* عمود واحد فقط على الهاتف */
+                gap: 20px; /* مسافة بين البطاقات */
+                padding: 0 10px;
+            }
+            /* التأكد من أن البطاقة المميزة لا تمتد على عمودين في الهاتف */
+            .featured-card {
+                grid-column: 1 / span 1 !important; /* إجبارها على عمود واحد */
+            }
+            /* تصغير حجم الخط للعناوين في الهاتف */
+            h1 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        /* ==================================================== */
+        /* إعادة تصميم شريط أيقونات التواصل الاجتماعي في Footer */
+        /* ==================================================== */
+        .footer-social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .footer-social-icons a {
+            color: var(--color-primary); /* لون الأيقونات */
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        .footer-social-icons a:hover {
+            color: var(--color-accent); /* لون عند المرور */
+        }
+        /* للتأكد من أن الـ Footer يستوعب الأيقونات */
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
         }
     </style>
 </head>
@@ -172,8 +211,18 @@
     <script src="../script.js"></script>
 
     <footer class="footer">
-        <div class="container footer-content"><p class="footer-logo">الملتقى</p></div>
-        <div class="footer-bottom"><p>&copy; 2025 مجلة الملتقى الثقافي للكتاب. جميع الحقوق محفوظة.</p></div>
+        <div class="container footer-content">
+            <p class="footer-logo">الملتقى</p>
+            
+            <div class="footer-social-icons">
+                <a href="#" aria-label="تويتر/إكس"><i class="fab fa-x-twitter"></i></a>
+                <a href="#" aria-label="فيسبوك"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="إنستغرام"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 مجلة الملتقى الثقافي للكتاب. جميع الحقوق محفوظة.</p>
+        </div>
     </footer>
 </body>
 </html>
