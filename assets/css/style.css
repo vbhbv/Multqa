@@ -1,0 +1,19 @@
+/* يتم تفعيل هذه الأنماط فقط عند وجود الكلاس 'dark-mode' على الـ body */
+body.dark-mode {
+    --primary-color: #bb86fc; /* لون مميز للإضاءة */
+    --background-color: #121212; /* خلفية داكنة */
+    --text-color: #e0e0e0; /* نص فاتح */
+    --card-background: #1e1e1e; /* خلفية البطاقات الداكنة */
+    /* ... باقي الأنماط الداكنة ... */
+}
+
+body {
+    /* الأنماط الافتراضية للوضع النهاري */
+    --primary-color: #007bff;
+    --background-color: #ffffff;
+    --text-color: #333333;
+    --card-background: #f8f9fa;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s; /* انتقال سلس عند التبديل */
+}
