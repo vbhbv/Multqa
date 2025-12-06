@@ -3,75 +3,218 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مكتبة الكتب الثقافي… مشروع فردي يهز الوسط المعرفي | العدد 12</title>
+    <title>بوت مكتبة الكتب الثقافي… مشروع فردي يهز الوسط المعرفي | العدد 12</title>
 
-    <!-- خطوط جديدة أكثر جمالًا -->
-    <link href="https://fonts.googleapis.com/css2?family=Changa:wght@300;400;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="../style.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&family=Lalezar&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-        body {
-            font-family: 'Changa', sans-serif;
-            background-color: #f7f7f7;
-            line-height: 2.2;
+        /* المتغيرات (Variables) لتسهيل التعديل على الألوان والخطوط */
+        :root {
+            --primary-color: #c4a362; /* لون ذهبي ترابي */
+            --text-color: #2c3e50;    /* لون نص داكن ومهني */
+            --light-bg: #f5f6fa;      /* خلفية فاتحة جداً */
+            --header-font: 'Lalezar', cursive;
+            --body-font: 'Tajawal', sans-serif;
+            --max-width: 950px;
         }
 
+        /* التصميم العام والـ Mobile-First */
+        body {
+            font-family: var(--body-font);
+            background-color: var(--light-bg);
+            line-height: 1.8; /* سطر مريح للقراءة */
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            direction: rtl; /* لضمان التوافق مع RTL */
+        }
+
+        .container {
+            width: 90%;
+            margin: 0 auto;
+            max-width: var(--max-width);
+            padding: 0 15px; /* مسافة على الجوانب للهاتف */
+        }
+
+        /* تنسيق الهيدر (العنوان الأعلى) */
+        .header {
+            background-color: #ffffff;
+            border-bottom: 1px solid #e1e1e1;
+            padding: 15px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo a {
+            font-family: var(--header-font);
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .cta-button {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #a68a54;
+        }
+
+        /* تنسيق المقال نفسه (بطاقة المقال) */
+        .main-content {
+            padding-top: 30px; 
+            padding-bottom: 50px;
+        }
+        
         .article-container {
             background: #ffffff;
-            padding: 40px 45px;
-            border-radius: 18px;
-            box-shadow: 0 10px 35px rgba(0,0,0,0.08);
+            padding: 25px 20px; /* مسافة أقل للهاتف */
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06); /* ظل ناعم */
         }
 
+        /* العنوان الرئيسي */
         h1 {
-            font-family: 'Amiri', serif;
+            font-family: var(--header-font);
+            font-size: 2.1rem; /* حجم ممتاز للهاتف */
+            color: #34495e; /* لون أغمق للقوة */
             line-height: 1.4;
+            margin-bottom: 10px;
         }
-
+        
+        /* بيانات المقال (Meta) */
         .meta {
-            font-size: 1rem;
-            color: #777;
-            margin-bottom: 30px;
-            border-right: 4px solid #c4a362;
-            padding-right: 12px;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            margin-bottom: 25px;
+            border-right: 3px solid var(--primary-color);
+            padding-right: 10px;
+            font-weight: 500;
         }
 
-        .article-body p {
-            font-size: 1.15rem;
-            margin-bottom: 22px;
-            color: #2b2b2b;
-        }
-
-        .article-body ul li {
-            margin-bottom: 12px;
-            font-size: 1.07rem;
-        }
-
-        /* مكان الصورة */
+        /* صورة المؤلف/المقال */
         .author-img {
             width: 100%;
-            border-radius: 16px;
+            border-radius: 10px;
             overflow: hidden;
-            margin-bottom: 35px;
-            border: 3px solid #eee;
+            margin-bottom: 25px;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
 
         .author-img img {
             width: 100%;
             display: block;
+            height: auto;
         }
 
+        /* تنسيق فقرات النص الأساسي */
+        .article-body p {
+            font-size: 1rem;
+            margin-bottom: 20px;
+            color: var(--text-color);
+            font-weight: 400;
+        }
+        
+        /* العناوين الفرعية */
         h3 {
-            font-family: 'Amiri', serif;
-            color: #c4a362;
-            border-right: 3px solid #e3d3a4;
-            padding-right: 10px;
-            margin-top: 45px;
-            margin-bottom: 18px;
+            font-family: var(--body-font);
+            font-weight: 700;
+            color: var(--primary-color);
+            border-right: 4px solid #e3d3a4;
+            padding-right: 12px;
+            margin-top: 40px;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
         }
 
+        /* قائمة النقاط */
+        .article-body ul {
+            list-style: none; /* إزالة التنقيط الافتراضي */
+            padding-right: 0;
+            margin-bottom: 25px;
+        }
+
+        .article-body ul li {
+            margin-bottom: 15px;
+            font-size: 1rem;
+            position: relative;
+            padding-right: 25px;
+        }
+
+        /* تصميم نقطة القائمة (Bullet Point) بشكل جميل */
+        .article-body ul li::before {
+            content: "\f058"; /* أيقونة check-circle */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            right: 0;
+            color: #1abc9c; /* لون أخضر جذاب */
+            font-size: 0.9rem;
+            top: 5px;
+        }
+
+        /* النص النهائي المميز */
+        .article-body p:last-child {
+            background-color: #e8f8f5; /* خلفية خفيفة للتأكيد */
+            padding: 15px;
+            border-radius: 8px;
+            border-right: 5px solid #1abc9c;
+            font-size: 1.05rem;
+            font-weight: 500;
+        }
+
+        /* تنسيق الفوتر (Footer) */
+        .footer {
+            background-color: #34495e;
+            color: #ecf0f1;
+            padding: 20px 0 10px;
+            text-align: center;
+        }
+        .footer-logo {
+            font-family: var(--header-font);
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        .footer-bottom p {
+            font-size: 0.8rem;
+            margin-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 10px;
+        }
+
+        /* استجابة الشاشة الأكبر (Tablet and Desktop) */
+        @media (min-width: 768px) {
+            .article-container {
+                padding: 40px 45px; /* مساحة أكبر على الشاشات الكبيرة */
+                border-radius: 18px;
+            }
+
+            h1 {
+                font-size: 2.8rem; /* تكبير حجم العنوان */
+            }
+
+            .article-body p {
+                font-size: 1.15rem; /* تكبير حجم النص الأساسي */
+            }
+
+            h3 {
+                font-size: 1.6rem;
+            }
+        }
     </style>
 
 </head>
@@ -82,17 +225,17 @@
             <div class="logo">
                 <a href="../index.html">جريدة الرافد الأدبية</a>
             </div>
-            <a href="index.html" class="cta-button" style="padding: 10px 20px;">
+            <a href="index.html" class="cta-button">
                 <i class="fas fa-list"></i> فهرس العدد 12
             </a>
         </div>
     </header>
     
-    <main class="container" style="max-width: 900px; padding-top: 50px; padding-bottom: 80px;">
+    <main class="container main-content">
 
         <div class="article-container">
 
-            <h1 style="font-size: 3.1rem; color: #c4a362;">
+            <h1 style="color: #34495e;">
                 بوت مكتبة الكتب الثقافي… كيف حوّل جهد فردي واحد مشروعاً رقمياً يخدم الآلاف؟
             </h1>
 
@@ -100,9 +243,7 @@
                 تقرير: هيئة التحرير | تحقيق صحفي
             </p>
 
-            <!-- مكان الصورة المطلوبة -->
             <div class="author-img">
-                <!-- ضع الصورة هنا باسم mjoul.jpg -->
                 <img src="mjoul.jpg" alt="صورة مجول شعلان الحيالي">
             </div>
 
@@ -126,7 +267,7 @@
                     مكتبة بحثية يعتمد عليها طلاب الدراسات العليا والباحثون والقراء من مختلف البلدان.
                 </p>
 
-                <h3>فهرسة نصف مليون كتاب… مهمة مستحيلة أنجزها فريق صغير</h3>
+                <h3>فهرسة نصف مليون كتاب… مهمة أنجزها فريق صغير</h3>
 
                 <p>
                     بدأت الفكرة بمحاولة فردية لتوفير مصادر للطلاب الذين يتواصلون معه بحثاً عن كتب غير متاحة، 
@@ -155,12 +296,6 @@
                     <li>إحياء دور الكتاب العربي في بيئة رقمية تعج بالسطحية.</li>
                 </ul>
 
-                <p>
-                    ما يميز المشروع ليس حجمه فقط، بل أنه ثمرة جهد فرد واحد آمن بأن المعرفة حق للجميع، 
-                    وأن الكتاب يجب أن يكون أقرب من شاشة الهاتف، فصنع جسراً بين القارئ والمكتبة الرقمية 
-                    في وقت كانت فيه الحاجة إلى المعرفة أشد من أي وقت مضى.
-                </p>
-
                 <p style="font-weight: bold; color: #166d4b; margin-top: 25px;">
                     هكذا استطاع مشروع فردي — بدأ من غرفة صغيرة في الموصل — أن يصبح واحدًا من أهم 
                     المبادرات الثقافية الرقمية في الوطن العربي.
@@ -176,7 +311,7 @@
 
     <footer class="footer">
         <div class="container footer-content">
-            <p class="footer-logo">الملتقى</p>
+            <p class="footer-logo">جريدة الرافد الأدبية</p>
         </div>
         <div class="footer-bottom">
             <p>&copy; 2025 مجلة الملتقى الثقافي للكتاب. جميع الحقوق محفوظة.</p>
