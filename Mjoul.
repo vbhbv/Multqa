@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بوت مكتبة الكتب الثقافي… حين يتحول الشغف الفردي إلى مشروع يخدم آلاف القرّاء | تقرير صحفي</title>
+    <link rel="stylesheet" href="../style.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@700&family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container nav-content">
+            <div class="logo">
+                <a href="../index.html">الـملتقى</a>
+            </div>
+            <a href="index.html" class="cta-button" style="padding: 10px 20px;">
+                <i class="fas fa-list"></i> فهرس العدد 12
+            </a>
+        </div>
+    </header>
+    
+    <main class="container" style="max-width: 900px; padding-top: 50px; padding-bottom: 80px;">
+        
+        <h1 style="color: var(--color-gold); font-size: 3rem; margin-bottom: 10px;">بوت مكتبة الكتب الثقافي… مبادرة فردية تخدم آلاف الباحثين</h1>
+
+        <p style="color: var(--color-text-secondary); margin-bottom: 40px; font-weight: 700;">
+            تقرير: هيئة تحرير مجلة الملتقى الثقافي للكتاب
+        </p>
+
+        <div class="article-body" style="font-size: 1.15rem; line-height: 2.2; text-align: justify;">
+
+            <p>
+                في زمن ازدحمت فيه المنصات الرقمية وتشتتت مصادر المعرفة، يبرز مشروع ثقافي عربي فريد من نوعه، 
+                جاء ليعيد للقارئ بوصلته، ويقدّم للباحث ما يحتاجه دون عناء. إنه 
+                <strong>بوت مكتبة الكتب الثقافي</strong> على تطبيق تيليغرام، المشروع الذي صنع فارقاً في حياة آلاف القرّاء والطلاب والباحثين.
+            </p>
+
+            <p>
+                يقف خلف هذا المشروع الشاب الموصلي 
+                <strong>مجول شعلان الحيالي</strong>، قارئ نهم وكاتب في مجالات علمية متعددة، 
+                وعضو اتحاد الكتّاب العراقيين. استطاع بجهود فردية خالصة أن يحوّل شغفه بالقراءة إلى 
+                خدمة ثقافية واسعة، يقوم عليها دون دعم مؤسسي أو رعاية رسمية، مكتفياً بطموحه 
+                وإصراره على نشر المعرفة.
+            </p>
+
+            <h3 style="margin-top: 40px; margin-bottom: 15px; color: var(--color-gold); border-bottom: 2px solid var(--color-surface); padding-bottom: 5px;">
+                فكرة بدأت بشاب… فأصبحت مكتبة رقمية متنقلة
+            </h3>
+
+            <p>
+                انطلقت الفكرة حين لاحظ الحيالي معاناة الكثير من الباحثين في إيجاد الكتب بصيغة PDF، 
+                خصوصاً في المجالات الأكاديمية والإنسانية. فبدأ بتجميع أرشيف واسع من الكتب، 
+                وفهرستها، ثم ابتكر نظام بحث ذكي داخل البوت، يعتمد على خوارزميات مطوَّرة 
+                للبحث الدلالي والكلمات المفتاحية والمرادفات.
+            </p>
+
+            <p>
+                لم يعد البوت مجرد مكان لتحميل الكتب، بل أصبح <strong>مكتبة عربية يومية</strong> 
+                تفتح أبوابها لكل من يبحث عن معرفة، وتقدّم الكتب المصوّرة والمراجع النادرة 
+                والطبعات الأكاديمية التي يصعب العثور عليها في المواقع التقليدية.
+            </p>
+
+            <blockquote style="margin: 30px 0; padding: 20px 30px; border-right: 5px solid var(--color-coral); background-color: var(--color-surface); font-style: italic; color: var(--color-text-main);">
+                “المعرفة حق للجميع، وهذه المكتبة ليست مشروعاً تجارياً… 
+                بل محاولة لردّ الدين للقراء الذين كنت واحداً منهم.”  
+                <p style="font-weight: bold; margin-top: 10px;">— مجول شعلان الحيالي</p>
+            </blockquote>
+
+            <h3 style="margin-top: 40px; margin-bottom: 15px; color: var(--color-gold); border-bottom: 2px solid var(--color-surface); padding-bottom: 5px;">
+                أثر واسع… وجمهور يتزايد
+            </h3>
+
+            <p>
+                اليوم، يستقبل البوت آلاف الطلبات يومياً، ويوفّر خدمة بحث فورية وسريعة، 
+                ويعتمد على قاعدة بيانات ضخمة تضم كتباً في الفلسفة، التاريخ، الدين، النقد الأدبي، 
+                العلوم، الروايات، والبحوث المتخصصة. وقد أصبح مرجعاً عملياً للطلاب في 
+                الجامعات العراقية والعربية، وللباحثين الذين يجدون في سهولته ما لا توفره المكتبات التقليدية.
+            </p>
+
+            <p>
+                ويعمل الحيالي باستمرار على تطوير تقنيات البحث داخل البوت، عبر 
+                إضافة فهم سياقي للجمل، وربط المرادفات، وتحسين محركات الفهرسة، 
+                ليتحول مشروعه شيئاً فشيئاً إلى <strong>نظام بحث معرفي عربي متكامل</strong>.
+            </p>
+
+            <h3 style="margin-top: 40px; margin-bottom: 15px; color: var(--color-gold); border-bottom: 2px solid var(--color-surface); padding-bottom: 5px;">
+                مشروع فردي… لكن أثره جماعي
+            </h3>
+
+            <p>
+                لا يملك الحيالي فريقاً فنياً أو مؤسسة داعمة، ومع ذلك استطاع عبر إصرار شخص واحد 
+                أن يقدم ما يشبه المشروع الثقافي الوطني. نجاحه هو دليل على أن المبادرات الفردية 
+                تستطيع – إن وُجد الشغف – أن تصنع مجتمعاً قارئاً، وأن تعيد الاعتبار للكتاب 
+                في وقت صارت المعرفة تتسرب من بين أيادينا.
+            </p>
+
+            <p style="font-weight: bold; color: var(--color-emerald); margin-top: 25px;">
+                مشروع مكتبة الكتب الثقافي ليس مجرد بوت… بل نافذة واسعة نحو العلم.
+            </p>
+
+        </div>
+    </main>
+
+    <script src="../script.js"></script>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <p class="footer-logo">الملتقى</p>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 مجلة الملتقى الثقافي للكتاب. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+</body>
+</html>
