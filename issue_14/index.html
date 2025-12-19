@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مجلة الملتقى | العدد الرابع عشر</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@700&family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .issue-banner {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../assets/issue14-cover.jpg'); /* تأكد من وجود صورة أو استبدلها بلون */
+            background-color: var(--color-purple);
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .article-card {
+            background: var(--color-bg);
+            border: 1px solid var(--color-surface);
+            padding: 25px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-decoration: none;
+            color: inherit;
+        }
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            border-color: var(--color-purple);
+        }
+        .article-card h3 {
+            font-family: 'Aref Ruqaa', serif;
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            margin-bottom: 15px;
+        }
+        .article-card .author {
+            font-size: 0.9rem;
+            color: var(--color-text-secondary);
+            font-weight: bold;
+        }
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: var(--color-surface);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container nav-content">
+            <div class="logo"><a href="../index.html">الـملتقى</a></div>
+            <nav>
+                <a href="../index.html">الرئيسية</a>
+                <a href="#" class="active">العدد 14</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="issue-banner">
+        <div class="container">
+            <h1 style="font-family: 'Aref Ruqaa', serif; font-size: 4rem;">العدد الرابع عشر</h1>
+            <p style="font-size: 1.5rem; opacity: 0.9;">ديسمبر 2025 - رحلة في أعماق الوعي والذات</p>
+        </div>
+    </section>
+
+    <main class="container" style="padding-bottom: 80px;">
+        <div class="section-title">
+            <h2>محتويات العدد</h2>
+            <div class="line"></div>
+        </div>
+
+        <div class="articles-grid">
+            
+            <a href="issue_14_zakaria_mani_misogyny.html" class="article-card">
+                <div>
+                    <span class="badge">فكر ونقد</span>
+                    <h3>نظرة الكره في الذكورية</h3>
+                </div>
+                <p class="author">بقلم: زكرياء ماني</p>
+            </a>
+
+            <a href="issue_14_enas_hussein_olivia_letter.html" class="article-card">
+                <div>
+                    <span class="badge">رسائل أدبية</span>
+                    <h3>رسالة إلى أوليڤيا</h3>
+                </div>
+                <p class="author">بقلم: إيناس حسين</p>
+            </a>
+
+            <a href="issue_14_malik_al-sebini_essence_vs_performance.html" class="article-card">
+                <div>
+                    <span class="badge">علم نفس</span>
+                    <h3>ما بين الجوهر والأداء</h3>
+                </div>
+                <p class="author">بقلم: مالك السبيني</p>
+            </a>
+
+            <a href="issue_14_odessa_fate_not_made.html" class="article-card">
+                <div>
+                    <span class="badge">فلسفة واقعية</span>
+                    <h3>القدر؟ لا يُصنع… بل يُفرض</h3>
+                </div>
+                <p class="author">بقلم: أوَدِيــِسـا</p>
+            </a>
+
+            <a href="issue_14_enas_faraj_tree_dreams.html" class="article-card">
+                <div>
+                    <span class="badge">نثر شعري</span>
+                    <h3>طفلان تحت شجرة</h3>
+                </div>
+                <p class="author">بقلم: إيناس فرج</p>
+            </a>
+
+            <a href="issue_14_mohammed_baqir_i_hate_myself.html" class="article-card">
+                <div>
+                    <span class="badge">مكاشفة</span>
+                    <h3>أنا أكره نفسي</h3>
+                </div>
+                <p class="author">بقلم: محمد باقر</p>
+            </a>
+
+            <a href="issue_14_ahmed_lujain_eyes_sorcery.html" class="article-card">
+                <div>
+                    <span class="badge">شعر عمودي</span>
+                    <h3>عيناكِ قد سحرت</h3>
+                </div>
+                <p class="author">بقلم: أحمد لجين</p>
+            </a>
+
+            <a href="issue_14_khawla_chaouchi_internal_noise.html" class="article-card">
+                <div>
+                    <span class="badge">سرد نفسي</span>
+                    <h3>بصوتي أنا.. لا بصدى ما يُملى عليّ</h3>
+                </div>
+                <p class="author">بقلم: خولة شاوشي</p>
+            </a>
+
+            <a href="issue_14_aliaa_alsalami_depth_of_place.html" class="article-card">
+                <div>
+                    <span class="badge">شذرات</span>
+                    <h3>هنا في عمق المكان</h3>
+                </div>
+                <p class="author">بقلم: علياء السلامي</p>
+            </a>
+
+            <a href="issue_14_mohammed_babiker_ready_to_farewell.html" class="article-card">
+                <div>
+                    <span class="badge">حكمة</span>
+                    <h3>كن مستعداً لقول وداعاً لأي شيء</h3>
+                </div>
+                <p class="author">بقلم: محمد بابكر عثمان</p>
+            </a>
+
+            <a href="issue_14_nour_aljabbarin_scattered_thoughts.html" class="article-card">
+                <div>
+                    <span class="badge">تأملات</span>
+                    <h3>أفكار مبعثرة</h3>
+                </div>
+                <p class="author">بقلم: نور الجبارين</p>
+            </a>
+
+            <a href="issue_14_mariam_ali_black_box.html" class="article-card">
+                <div>
+                    <span class="badge">فلسفة الوعي</span>
+                    <h3>عجز الروح.. ودروع الصندوق الأسود</h3>
+                </div>
+                <p class="author">بقلم: مريم علي</p>
+            </a>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <p class="footer-logo">الملتقى</p>
+            <p>مجلة ثقافية أدبية تعنى بالكلمة الراقية والفكر الحر.</p>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 مجلة الملتقى الثقافي للكتاب. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+</body>
+</html>
