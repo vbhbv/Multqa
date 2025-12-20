@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>شهادة تميز - الكاتبة أوديسا</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Aref+Ruqaa:wght@700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1a237e;
+            --gold-color: #d4af37;
+            --text-color: #333;
+        }
+        body { 
+            background-color: #e0e0e0; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh;
+            margin: 0;
+        }
+        .certificate-container {
+            width: 900px;
+            height: 600px;
+            padding: 20px;
+            background: #fff;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+            border: 2px solid var(--gold-color);
+        }
+        .outer-border {
+            width: 100%;
+            height: 100%;
+            border: 8px double var(--gold-color);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png'); /* تأثير ورق قديم خفيف */
+        }
+        .decoration-corner {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border: 5px solid var(--gold-color);
+        }
+        .top-left { top: 10px; left: 10px; border-right: none; border-bottom: none; }
+        .top-right { top: 10px; right: 10px; border-left: none; border-bottom: none; }
+        .bottom-left { bottom: 10px; left: 10px; border-right: none; border-top: none; }
+        .bottom-right { bottom: 10px; right: 10px; border-left: none; border-top: none; }
+
+        .header-section { margin-top: 40px; text-align: center; }
+        .logo-text { font-family: 'Aref Ruqaa', serif; font-size: 1.2rem; color: var(--gold-color); letter-spacing: 2px; }
+        
+        .main-title {
+            font-family: 'Aref Ruqaa', serif;
+            font-size: 4rem;
+            color: var(--primary-color);
+            margin: 10px 0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .award-text {
+            font-family: 'Amiri', serif;
+            font-size: 1.6rem;
+            color: var(--text-color);
+            margin-top: 10px;
+        }
+
+        .winner-name {
+            font-family: 'Aref Ruqaa', serif;
+            font-size: 3.5rem;
+            color: var(--gold-color);
+            margin: 15px 0;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 5px;
+            width: 80%;
+            text-align: center;
+        }
+
+        .reason-text {
+            font-family: 'Cairo', sans-serif;
+            font-size: 1.1rem;
+            width: 80%;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .footer-section {
+            width: 85%;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            position: relative;
+        }
+
+        .signature-box {
+            text-align: center;
+            width: 200px;
+        }
+
+        .signature-line {
+            border-top: 2px solid var(--primary-color);
+            margin-top: 10px;
+            padding-top: 5px;
+            font-family: 'Cairo', sans-serif;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .gold-seal {
+            width: 130px;
+            height: 130px;
+            background: radial-gradient(circle, #ffd700, #b8860b);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            border: 2px solid #fff;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%) translateY(-30%);
+            z-index: 10;
+        }
+        
+        .seal-content {
+            border: 1px dashed #fff;
+            border-radius: 50%;
+            width: 110px;
+            height: 110px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-family: 'Aref Ruqaa', serif;
+            font-size: 0.8rem;
+            color: #fff;
+            line-height: 1.2;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="certificate-container">
+        <div class="outer-border">
+            <div class="decoration-corner top-left"></div>
+            <div class="decoration-corner top-right"></div>
+            <div class="decoration-corner bottom-left"></div>
+            <div class="decoration-corner bottom-right"></div>
+
+            <div class="header-section">
+                <div class="logo-text">مجلـــــة الملتقــــى الثقـافـي للكتــــاب</div>
+                <div class="main-title">شهادة تميـز وتفـوق</div>
+            </div>
+
+            <div class="award-text">تمنح هذه الشهادة بكل فخر للمبدعة:</div>
+            
+            <div class="winner-name">أوَدِيــِسـا</div>
+
+            <div class="reason-text">
+                تقديراً لإبداعها الأدبي وفوزها بالمركز الأول في استفتاء **أفضل نص أدبي** للعدد الرابع عشر، عن نصها الفلسفي المتميز: 
+                <br>
+                <strong style="color: var(--primary-color);">"القدر؟ لا يُصنع… بل يُفرض"</strong>
+            </div>
+
+            <div class="footer-section">
+                <div class="signature-box">
+                    <div style="font-family: 'Amiri', serif; font-style: italic; color: #888;">فريق التحرير</div>
+                    <div class="signature-line">إدارة مجلة الملتقى</div>
+                </div>
+
+                <div class="gold-seal">
+                    <div class="seal-content">
+                        المركز الأول<br>العدد 14<br>ديسمبر 2025
+                    </div>
+                </div>
+
+                <div class="signature-box">
+                    <div style="font-family: 'Aref Ruqaa', serif; font-size: 1.5rem; color: var(--primary-color);">حمد العطار</div>
+                    <div class="signature-line">رئيس مجلس الإدارة</div>
+                </div>
+            </div>
+
+            <div style="margin-top: auto; margin-bottom: 20px; font-size: 0.8rem; color: #aaa; font-family: Cairo;">
+                تحريراً في: 21 ديسمبر 2025م
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
