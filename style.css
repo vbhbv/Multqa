@@ -1,381 +1,279 @@
-/*
- * مجلة الملتقى الثقافي - التصميم العالمي المثير (V2)
- * خطوط: Aref Ruqaa (فخامة) و Cairo (وضوح)
- * تصميم البطاقات: مائل (Skewed) وغير مطروق
- */
-
-/* ===================================================
-   1. الخطوط والمتغيرات الأساسية
-   =================================================== */
-:root {
-    /* الألوان الزاهية والدرامية */
-    --color-primary: #00A389;      /* زمردي عميق (خلفية فخمة) */
-    --color-secondary: #FFC300;    /* ذهبي ساطع (تمييز) */
-    --color-accent: #DA2C43;       /* مرجاني درامي (للتفاعل) */
-    --color-background: #F4F4F4;   /* خلفية فاتحة */
-    --color-surface: #FFFFFF;      /* خلفية البطاقات والسطح */
-    --color-text-main: #2C3E50;    /* كحلي غامق للقراءة */
-    --color-text-light: #F0F0F0;   /* للنصوص الفاتحة */
-    --color-border: #E0E0E0;
-
-    /* الخطوط الفخمة */
-    --font-logo: 'Aref Ruqaa', serif; /* للعنوان والشعار الرئيسي */
-    --font-heading: 'Aref Ruqaa', serif; /* للعناوين */
-    --font-body: 'Cairo', sans-serif; /* للنصوص العادية */
-
-    /* الألوان الخاصة بالبطاقات الملونة */
-    --color-emerald-bg: #EAF7F7;
-    --color-emerald-main: #00A389;
-    --color-coral-bg: #FFF3F4;
-    --color-coral-main: #DA2C43;
-    --color-gold-bg: #FFFBEA;
-    --color-gold-main: #FFC300;
-
-    /* الانتقال والقياسات */
-    --transition-speed: 0.4s;
-    --menu-width: 320px;
-}
-
-/* ===================================================
-   2. الوضع الليلي (Dark Mode) - درامي وفخم
-   =================================================== */
-body.dark-mode {
-    --color-primary: #1ED7AA;
-    --color-secondary: #FFEA80;
-    --color-accent: #FF5A73;
-    --color-background: #121212; /* خلفية داكنة جداً */
-    --color-surface: #1E1E1E;
-    --color-text-main: #E0E0E0;
-    --color-text-light: #2C3E50;
-    --color-border: #333333;
-
-    --color-emerald-bg: #15332F;
-    --color-emerald-main: #1ED7AA;
-    --color-coral-bg: #3D1219;
-    --color-coral-main: #FF5A73;
-    --color-gold-bg: #3D3510;
-    --color-gold-main: #FFEA80;
-}
-
-/* ===================================================
-   3. الأنماط العامة وإعادة الضبط (تطبيق الخطوط)
-   =================================================== */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-a { text-decoration: none; color: inherit; }
-
-body {
-    font-family: var(--font-body); 
-    background-color: var(--color-background);
-    color: var(--color-text-main);
-    line-height: 1.8;
-    direction: rtl;
-    transition: background-color var(--transition-speed), color var(--transition-speed);
-}
-.container { max-width: 1400px; margin: 0 auto; padding: 0 30px; }
-
-/* تطبيق الخطوط على جميع العناوين */
-h1, h2, h3, .section-title {
-    font-family: var(--font-heading);
-    color: var(--color-text-main);
-    margin-bottom: 0.7em;
-    font-weight: 700;
-}
-.section-title {
-    font-size: 2.5rem;
-    text-align: center;
-    margin-top: 60px;
-    margin-bottom: 50px;
-    color: var(--color-primary);
-}
-
-/* ===================================================
-   4. شريط التنقل (Header)
-   =================================================== */
-.header {
-    background-color: var(--color-surface);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-    padding: 15px 0;
-    position: sticky;
-    top: 0;
-    z-index: 2000;
-}
-.nav-content { display: flex; justify-content: space-between; align-items: center; }
-
-.logo a {
-    font-family: var(--font-logo);
-    font-size: 2.8rem; /* شعار كبير ومثير */
-    color: var(--color-primary);
-    font-weight: 700;
-    letter-spacing: 2px;
-}
-.nav-icon {
-    background: none; border: none; cursor: pointer;
-    font-size: 1.5rem;
-    color: var(--color-text-main);
-    padding: 10px;
-    transition: color 0.3s;
-}
-
-/* ===================================================
-   5. القائمة الجانبية (Sidebar Menu)
-   =================================================== */
-.sidebar {
-    right: calc(-1 * var(--menu-width));
-    width: var(--menu-width);
-    z-index: 3000;
-    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.3);
-}
-.sidebar.open { right: 0; }
-.sidebar a {
-    padding: 15px 0;
-    border-bottom: 1px dashed var(--color-border);
-    width: 100%;
-    color: var(--color-text-main);
-    transition: color 0.3s, padding 0.3s;
-}
-.sidebar a:hover {
-    color: var(--color-primary);
-    padding-right: 10px;
-}
-
-/* ===================================================
-   6. القسم التعريفي (Cultural Stage) - مدهش
-   =================================================== */
-.cultural-stage {
-    min-height: 450px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background: var(--color-primary); /* خلفية لون الزمرد */
-    color: var(--color-text-light);
-    margin: 50px 0;
-    border-radius: 15px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-}
-.stage-content { max-width: 800px; padding: 40px; }
-.cultural-stage h1 {
-    font-family: var(--font-logo);
-    font-size: 4rem;
-    color: var(--color-secondary); /* العنوان بالذهبي */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    margin-bottom: 20px;
-    line-height: 1.2;
-}
-.cultural-stage p {
-    font-size: 1.2rem;
-    color: rgba(255, 255, 255, 0.9);
-    margin-bottom: 30px;
-}
-
-/* زر الدعوة للعمل (CTA Button) */
-.cta-button {
-    display: inline-block;
-    padding: 15px 35px;
-    background-color: var(--color-secondary);
-    color: var(--color-text-main);
-    font-weight: 700;
-    border-radius: 50px;
-    transition: transform 0.3s, box-shadow 0.3s;
-    font-size: 1.1rem;
-}
-.cta-button:hover {
-    transform: translateY(-3px) scale(1.03);
-    box-shadow: 0 10px 20px rgba(255, 195, 0, 0.4);
-}
-
-/* ===================================================
-   7. تصميم البطاقات (Skewed & Dynamic Cards) - ملونة ورائعة
-   =================================================== */
-.article-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 40px;
-    padding: 50px 0 80px;
-}
-.card {
-    background-color: var(--color-surface);
-    border-radius: 8px; /* حواف حادة قليلاً */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); /* ظل واضح */
-    transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.3s;
-    overflow: hidden;
-    position: relative;
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    /* الشكل المائل (Skewed Look) */
-    transform: rotate(1deg) translateY(30px); /* ميلان بسيط + تأثير الظهور */
-    opacity: 0;
-}
-
-/* عكس الميلان لبطاقات معينة لإضافة التباين */
-.card:nth-child(even) {
-    transform: rotate(-1deg) translateY(30px);
-}
-.card:nth-child(2n+1) { /* فردي */
-    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.1);
-}
-.card:nth-child(2n) { /* زوجي */
-    box-shadow: -10px 10px 15px rgba(0, 0, 0, 0.1);
-}
-
-
-.card:hover {
-    /* تعديل الميلان وجعله مستقيماً عند التفاعل */
-    transform: rotate(0deg) scale(1.02); 
-    filter: brightness(1.05); /* إضاءة خفيفة عند التمرير */
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-}
-
-.card-content { padding: 30px; }
-
-/* شريط التمييز اللوني المزدوج */
-.card:before, .card:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    height: 8px;
-    width: 50%;
-}
-.card:before { left: 0; }
-.card:after { right: 0; }
-
-/* تطبيق الألوان المزدوجة على البطاقات */
-.card.color-emerald:before { background-color: var(--color-emerald-main); }
-.card.color-emerald:after { background-color: var(--color-secondary); } /* زمردي + ذهبي */
-
-.card.color-coral:before { background-color: var(--color-coral-main); }
-.card.color-coral:after { background-color: var(--color-primary); } /* مرجاني + زمردي */
-
-.card.color-gold:before { background-color: var(--color-gold-main); }
-.card.color-gold:after { background-color: var(--color-accent); } /* ذهبي + مرجاني */
-
-
-.card-category {
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: var(--color-text-secondary); /* لون ثانوي */
-    display: block;
-    margin-bottom: 15px;
-    padding-bottom: 10px;
-    border-bottom: 1px dashed var(--color-border);
-}
-
-/* الروابط الداخلية (اقرأ المقال) */
-.read-link {
-    display: inline-block;
-    margin-top: 20px;
-    color: var(--color-accent);
-    font-weight: 700;
-    border-bottom: 2px solid var(--color-accent); /* خط تحتي واضح */
-    padding-bottom: 3px;
-    transition: color 0.3s, border-color 0.3s;
-}
-.read-link:hover {
-    color: var(--color-primary);
-    border-color: var(--color-primary);
-}
-
-/* CTA Secondary */
-.cta-secondary {
-    text-align: center;
-    padding: 40px;
-    border: 1px dashed var(--color-border);
-    border-radius: 10px;
-    margin-bottom: 60px;
-    background-color: var(--color-surface);
-}
-.cta-secondary p {
-    font-size: 1.1rem;
-    margin-bottom: 20px;
-}
-.secondary-btn {
-    display: inline-block;
-    padding: 10px 25px;
-    background-color: var(--color-primary);
-    color: white;
-    border-radius: 5px;
-    font-weight: 400;
-    transition: background-color 0.3s;
-}
-.secondary-btn:hover { background-color: var(--color-accent); }
-
-/* ===================================================
-   8. التذييل (Footer) - فخم
-   =================================================== */
-.footer {
-    background-color: var(--color-text-main); /* لون داكن للتذييل */
-    color: var(--color-text-light);
-    padding: 40px 0 10px;
-    font-size: 0.9rem;
-}
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    padding-bottom: 30px;
-    border-bottom: 1px solid var(--color-border);
-}
-.footer-logo {
-    font-family: var(--font-logo);
-    font-size: 2rem;
-    color: var(--color-secondary);
-}
-.footer-links a {
-    margin-left: 20px;
-    transition: color 0.3s;
-}
-.footer-links a:hover {
-    color: var(--color-primary);
-}
-.social-icons a {
-    font-size: 1.4rem;
-    margin-right: 15px;
-    transition: color 0.3s;
-}
-.social-icons a:hover {
-    color: var(--color-secondary);
-}
-.footer-bottom {
-    text-align: center;
-    padding-top: 15px;
-}
-
-/* ===================================================
-   9. تأثيرات الحركة والـ JS (Scroll Reveal)
-   =================================================== */
-.visible {
-    opacity: 1;
-    transform: rotate(0deg) translateY(0);
-}
-
-/* ===================================================
-   10. التصميم المتجاوب
-   =================================================== */
-@media (max-width: 800px) {
-    .cultural-stage h1 { font-size: 3rem; }
-    .footer-content { 
-        flex-direction: column;
-        text-align: center;
-        gap: 20px;
-    }
-    .footer-links { margin: 10px 0; }
-    .footer-links a { margin: 0 10px; }
-}
-
-@media (max-width: 480px) {
-    .cultural-stage h1 { font-size: 2.2rem; }
-    .article-grid { grid-template-columns: 1fr; }
+    <title>مجلة الملتقى الثقافي | منبر الفكر العربي</title>
     
-    /* إلغاء الميلان على الأجهزة الصغيرة لسهولة العرض */
-    .card, .card:nth-child(even) {
-        transform: rotate(0deg) translateY(20px);
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    }
-    .card:hover {
-        transform: translateY(-5px) scale(1.02);
-    }
-}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@700&family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --color-primary: #00A389;      /* زمردي عميق */
+            --color-secondary: #FFC300;    /* ذهبي ساطع */
+            --color-accent: #DA2C43;       /* مرجاني درامي */
+            --color-background: #F4F4F4;
+            --color-surface: #FFFFFF;
+            --color-text-main: #2C3E50;
+            --color-text-light: #F0F0F0;
+            --font-logo: 'Aref Ruqaa', serif;
+            --font-heading: 'Aref Ruqaa', serif;
+            --font-body: 'Cairo', sans-serif;
+            --transition-speed: 0.4s;
+            --menu-width: 320px;
+        }
+
+        body.dark-mode {
+            --color-primary: #1ED7AA;
+            --color-secondary: #FFEA80;
+            --color-background: #121212;
+            --color-surface: #1E1E1E;
+            --color-text-main: #E0E0E0;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-background);
+            color: var(--color-text-main);
+            line-height: 1.8;
+            direction: rtl;
+            transition: background-color 0.4s;
+            overflow-x: hidden;
+        }
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 30px; }
+
+        /* شريط التنقل العلوي */
+        .header {
+            background-color: var(--color-surface);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 2000;
+        }
+        .nav-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo a {
+            font-family: var(--font-logo);
+            font-size: 2.8rem;
+            color: var(--color-primary);
+        }
+        .nav-icon { background: none; border: none; cursor: pointer; font-size: 1.5rem; color: var(--color-text-main); padding: 10px; }
+
+        /* القسم التعريفي (البانر الرئيسي) */
+        .cultural-stage {
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, var(--color-primary), #006b5a);
+            color: white;
+            margin: 40px 0;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 163, 137, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        .stage-content h1 {
+            font-family: var(--font-logo);
+            font-size: 4.5rem;
+            color: var(--color-secondary);
+            margin-bottom: 20px;
+        }
+        .stage-content p { font-size: 1.3rem; margin-bottom: 30px; max-width: 700px; margin-left: auto; margin-right: auto; }
+
+        .cta-button {
+            display: inline-block;
+            padding: 18px 45px;
+            background-color: var(--color-secondary);
+            color: #000;
+            font-weight: 700;
+            border-radius: 50px;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+        .cta-button:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(255,195,0,0.4); }
+
+        /* شبكة البطاقات المائلة (Dynamic Skewed Cards) */
+        .article-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 50px;
+            padding: 60px 0;
+        }
+        .card {
+            background: var(--color-surface);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            padding: 35px;
+            position: relative;
+            text-decoration: none;
+            opacity: 0; /* للأنيميشن */
+            transform: rotate(2deg) translateY(40px);
+        }
+        .card:nth-child(even) { transform: rotate(-2deg) translateY(40px); }
+
+        .card.reveal { opacity: 1; transform: rotate(0deg) translateY(0); }
+        .card:hover { transform: scale(1.03) !important; box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
+
+        .card-category { font-weight: 700; color: var(--color-primary); margin-bottom: 15px; display: block; border-bottom: 1px dashed #eee; padding-bottom: 10px; }
+        .card h3 { font-family: var(--font-heading); font-size: 1.8rem; margin-bottom: 15px; color: var(--color-text-main); }
+        .card p { font-size: 1rem; color: #666; margin-bottom: 15px; }
+
+        .card:before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 6px;
+            border-radius: 12px 12px 0 0;
+        }
+        .color-gold:before { background: var(--color-secondary); }
+        .color-purple:before { background: #9b59b6; }
+        .color-blue:before { background: #3498db; }
+        .color-emerald:before { background: var(--color-primary); }
+
+        .read-link { font-weight: 700; color: var(--color-accent); border-bottom: 2px solid; padding-bottom: 2px; }
+
+        /* شريط تليجرام */
+        #telegram-banner {
+            position: fixed; bottom: -100px; left: 0; width: 100%;
+            background: #0088CC; color: white; padding: 20px;
+            display: flex; justify-content: space-between; align-items: center;
+            transition: 0.5s; z-index: 5000;
+        }
+        #telegram-banner.show { bottom: 0; }
+        .join-btn { background: var(--color-secondary); padding: 10px 20px; color: #000; border-radius: 5px; font-weight: 700; }
+
+        /* القائمة الجانبية */
+        .sidebar { position: fixed; top: 0; right: -320px; width: 320px; height: 100%; background: var(--color-surface); z-index: 4000; transition: 0.4s; padding: 40px; box-shadow: -10px 0 30px rgba(0,0,0,0.1); }
+        .sidebar.open { right: 0; }
+        .sidebar a { display: block; padding: 15px 0; font-size: 1.2rem; color: var(--color-text-main); border-bottom: 1px solid #eee; text-decoration: none; }
+
+        /* التذييل */
+        .footer { background: #1a1a1a; color: white; padding: 60px 0 20px; text-align: center; }
+        .footer-logo { font-family: var(--font-logo); font-size: 2.5rem; color: var(--color-secondary); margin-bottom: 20px; }
+
+        @media (max-width: 768px) {
+            .stage-content h1 { font-size: 2.5rem; }
+            .article-grid { grid-template-columns: 1fr; }
+            .card { transform: rotate(0deg) !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container nav-content">
+            <div class="logo"><a href="index.html">مجلة الـملتقى</a></div>
+            <div class="nav-actions">
+                <button id="dark-mode-toggle" class="nav-icon"><i class="fas fa-moon"></i></button>
+                <button id="hamburger-btn" class="nav-icon"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <nav id="sidebar-menu" class="sidebar">
+        <button id="close-menu-btn" style="background:none; border:none; font-size: 2rem; cursor:pointer;"><i class="fas fa-times"></i></button>
+        <div style="margin-top: 30px;">
+            <a href="index.html"><i class="fas fa-home"></i> الرئيسية</a>
+            <a href="archive.html"><i class="fas fa-feather-alt"></i> الأرشيف</a>
+            <a href="about.html"><i class="fas fa-user-friends"></i> فريق التحرير</a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section class="cultural-stage">
+            <div class="stage-content">
+                <h1>مـنـبـر الـفـكـر العربي</h1>
+                <p>نغوص في أعماق المعرفة، نُحلل المشهد الثقافي، ونمنح القلم مساحته الحرة للتعبير والنقد المعاصر.</p>
+                <a href="#article-showcase" class="cta-button">تصفح أحدث الأعداد <i class="fas fa-arrow-down"></i></a>
+            </div>
+        </section>
+        
+        <section id="article-showcase"> 
+            <h2 style="font-family: var(--font-heading); font-size: 3rem; text-align: center; margin-top: 50px; color: var(--color-primary);">📚 الإصدارات الحالية</h2>
+            
+            <div class="article-grid">
+                
+                <article class="card color-gold">
+                    <div class="card-content">
+                        <span class="card-category">يناير 2026</span>
+                        <h3>العدد 15: تجليات الذات وصمود الروح</h3>
+                        <p>باقة غنية من النصوص التي تتراوح بين المنهج النفسي، الوجدانيات، والتحليل الاجتماعي والسياسي.</p>
+                        <a href="issue_15/index.html" class="read-link">تصفح العدد كاملاً</a>
+                    </div>
+                </article>
+
+                <article class="card color-purple">
+                    <div class="card-content">
+                        <span class="card-category">ديسمبر 2025</span>
+                        <h3>العدد 14: أعماق الوعي</h3>
+                        <p>عدد استثنائي يغوص في صراعات الروح وتناقضات الوجود من فلسفة القدر إلى مواجهة الصندوق الأسود للوعي.</p>
+                        <a href="issue_14/index.html" class="read-link">تصفح العدد كاملاً</a>
+                    </div>
+                </article>
+
+                <article class="card color-blue">
+                    <div class="card-content">
+                        <span class="card-category">شتاء 2026</span>
+                        <h3>العدد 13: القيمة والأسبقية</h3>
+                        <p>يستكشف العدد العلاقة بين القيمة الذاتية والمعايير الاجتماعية وتأثير الأخطاء المعرفية.</p>
+                        <a href="issues_13/index.html" class="read-link">تصفح العدد كاملاً</a>
+                    </div>
+                </article>
+
+                <article class="card color-emerald">
+                    <div class="card-content">
+                        <span class="card-category">صيف 2025</span>
+                        <h3>العدد 12: جدلية الهوية</h3>
+                        <p>عدد يناقش تداعيات الحداثة على مفهوم الذات الفردية والجمعية في الأدب والفكر العربي.</p>
+                        <a href="issues_12/index.html" class="read-link">تصفح العدد كاملاً</a>
+                    </div>
+                </article>
+                
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-logo">الملتقى</div>
+        <p>جميع الحقوق محفوظة &copy; 2026 مجلة الملتقى الثقافي</p>
+        <div style="margin-top: 20px;">
+            <a href="tg://resolve?domain=iiollr" style="color: white; font-size: 1.5rem; margin: 0 10px;"><i class="fab fa-telegram"></i></a>
+            <a href="#" style="color: white; font-size: 1.5rem; margin: 0 10px;"><i class="fab fa-x-twitter"></i></a>
+        </div>
+    </footer>
+    
+    <div id="telegram-banner">
+        <span>انضم إلينا على تليجرام ليصلك كل جديد!</span>
+        <a href="tg://resolve?domain=iiollr" class="join-btn">انضم الآن</a>
+    </div>
+
+    <script>
+        // تفعيل الأنيميشن عند السكرول
+        const cards = document.querySelectorAll('.card');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) entry.target.classList.add('reveal');
+            });
+        }, { threshold: 0.1 });
+
+        cards.forEach(card => observer.observe(card));
+
+        // القائمة الجانبية
+        const menu = document.getElementById('sidebar-menu');
+        document.getElementById('hamburger-btn').onclick = () => menu.classList.add('open');
+        document.getElementById('close-menu-btn').onclick = () => menu.classList.remove('open');
+
+        // الوضع الليلي
+        document.getElementById('dark-mode-toggle').onclick = () => document.body.classList.toggle('dark-mode');
+
+        // إظهار بانر تليجرام
+        setTimeout(() => document.getElementById('telegram-banner').classList.add('show'), 3000);
+    </script>
+</body>
+</html>
