@@ -3,145 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>فهرس العدد الخامس عشر | مجلة نبض</title>
+    <title>فهرس العدد الخامس عشر | مجلة الملتقى</title>
     <link rel="stylesheet" href="../style.css">
     <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body { background-color: #f4f1ea; font-family: 'Cairo', sans-serif; }
-        .header-issue {
-            text-align: center;
-            padding: 60px 20px;
-            background: #0a1931;
-            color: #ffffff;
-            margin-bottom: 40px;
+        :root { --gold: #b08d32; --dark: #0a1931; --bg: #fdfcf7; }
+        body { background-color: var(--bg); font-family: 'Cairo', sans-serif; color: var(--dark); margin: 0; padding: 0; }
+        header { background: var(--dark); color: white; text-align: center; padding: 50px 20px; border-bottom: 5px solid var(--gold); }
+        header h1 { font-family: 'Amiri', serif; font-size: 3rem; margin: 0; color: var(--gold); }
+        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+        .articles-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+        .card { 
+            background: white; padding: 20px; border-radius: 8px; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05); text-decoration: none; 
+            border-right: 4px solid var(--gold); transition: 0.3s;
         }
-        .header-issue h1 { font-family: 'Amiri', serif; font-size: 3.5rem; margin: 0; color: #b08d32; }
-        .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
-        .articles-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
-        }
-        .article-card {
-            background: #fff;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
-            border-right: 5px solid #b08d32;
-            text-decoration: none;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .article-card:hover { transform: translateY(-5px); }
-        .article-card h2 {
-            font-family: 'Amiri', serif;
-            font-size: 1.6rem;
-            color: #0a1931;
-            margin: 0 0 10px 0;
-            line-height: 1.4;
-        }
-        .article-card p { color: #666; font-size: 1rem; margin: 0; }
-        .footer-magazine { text-align: center; margin-top: 60px; padding: 40px; color: #888; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+        .card h2 { font-family: 'Amiri', serif; font-size: 1.4rem; color: var(--dark); margin: 0 0 10px 0; }
+        .card span { color: #666; font-size: 0.9rem; font-weight: bold; }
+        .footer-nav { text-align: center; margin-top: 50px; padding: 40px; }
+        .back-btn { text-decoration: none; color: var(--gold); font-weight: bold; border: 1px solid var(--gold); padding: 10px 25px; border-radius: 5px; }
     </style>
 </head>
 <body>
 
-    <header class="header-issue">
+    <header>
         <h1>العدد الخامس عشر</h1>
-        <p>إبداعات أدبية وفكرية من نخبة الكتاب</p>
+        <p>الفهرس الكامل للمقالات والإبداعات</p>
     </header>
 
     <div class="container">
         <div class="articles-grid">
 
-            <a href="issue_15_samar_shaker_loneliness.html" class="article-card">
-                <h2>الوحدة.. سجنٌ أم ملاذ؟</h2>
-                <p>بقلم: سمر شاكر</p>
-            </a>
-
-            <a href="issue_15_marwa_al_maghrebi_patience.html" class="article-card">
-                <h2>الصبر والاحتساب</h2>
-                <p>بقلم: مروة المغربي</p>
-            </a>
-
-            <a href="issue_15_khadija_mosul_patience.html" class="article-card">
-                <h2>صبرٌ جميلٌ</h2>
-                <p>بقلم: خديجة من الموصل</p>
-            </a>
-
-            <a href="issue_15_mohamed_hussein_al_muayyad_poem.html" class="article-card">
-                <h2>نص شعري: يا ربَّ جُودك</h2>
-                <p>بقلم: محمد حسين المؤيد</p>
-            </a>
-
-            <a href="issue_15_hiba_mallah_the_butterfly.html" class="article-card">
-                <h2>الفراشة</h2>
-                <p>بقلم: هبة ملاح</p>
-            </a>
-
-            <a href="issue_15_marwa_adel_loneliness.html" class="article-card">
-                <h2>هل شعرت يوماً بالوحدة؟</h2>
-                <p>بقلم: مروة عادل</p>
-            </a>
-
-            <a href="issue_15_malik_al-sebini_rain_method.html" class="article-card">
-                <h2>رحلة إلى قمة الجبل (منهج RAIN)</h2>
-                <p>بقلم: مالك السبيني</p>
-            </a>
-
-            <a href="issue_15_mohammed_babiker_problem_in_you.html" class="article-card">
-                <h2>متى تكون المشكلة فعلاً فيك؟</h2>
-                <p>بقلم: محمد بابكر عثمان</p>
-            </a>
-
-            <a href="issue_15_aya_mahmoud_speech.html" class="article-card">
-                <h2>كَلام</h2>
-                <p>بقلم: Aya mahmoud</p>
-            </a>
-
-            <a href="issue_15_noor_al_jabarin_past_thanks.html" class="article-card">
-                <h2>أملتُ على الأيام لتُنسيني</h2>
-                <p>بقلم: نور الجبارين</p>
-            </a>
-
-            <a href="issue_15_zakaria_mani_tunisian_revolution.html" class="article-card">
-                <h2>توقعات الثورة التونسية</h2>
-                <p>بقلم: زكرياء ماني</p>
-            </a>
-
-            <a href="issue_15_maymouna_resignation_from_world.html" class="article-card">
-                <h2>متعبة أيها العالم</h2>
-                <p>بقلم: ميمونة</p>
-            </a>
-
-            <a href="issue_15_khawla_shaoushi_not_an_extension.html" class="article-card">
-                <h2>لست امتداداً لأحد</h2>
-                <p>بقلم: خولة شاوشي</p>
-            </a>
-
-            <a href="issue_15_zahra_al_muhayn_drops_of_nostalgia.html" class="article-card">
-                <h2>قطرات تعزف الحنين</h2>
-                <p>بقلم: زهراء المحين</p>
-            </a>
-
-            <a href="issue_15_ahmed_lujain_oh_coquettish.html" class="article-card">
-                <h2>قصيدة: يا ذاتَ الدلالِ</h2>
-                <p>بقلم: أحمد لجين</p>
-            </a>
-
-            <a href="issue_15_aya_alrahman_silence_explosion.html" class="article-card">
+            <a href="Issue_15_aya_alrahman_silence_explosion.html" class="card">
                 <h2>انفجار الصمت</h2>
-                <p>بقلم: اية الرحمن</p>
+                <span>بقلم: اية الرحمن</span>
+            </a>
+
+            <a href="issue_15_ahmed_lujain_oh_coquettish.html" class="card">
+                <h2>يا ذاتَ الدلالِ</h2>
+                <span>بقلم: احمد لجين</span>
+            </a>
+
+            <a href="issue_15_zahra_al_muhayn_drops_of_nostalgia.html" class="card">
+                <h2>قطرات تعزف الحنين</h2>
+                <span>بقلم: زهراء المحين</span>
+            </a>
+
+            <a href="issue_15_khawla_shaoushi_not_an_extension.html" class="card">
+                <h2>لست امتداداً لأحد</h2>
+                <span>بقلم: خولة شاوشي</span>
+            </a>
+
+            <a href="issue_15_maymouna_resignation_from_world.html" class="card">
+                <h2>متعبة أيها العالم ..</h2>
+                <span>بقلم: ميمونة</span>
+            </a>
+
+            <a href="issue_15_zakaria_mani_tunisian_revolution.html" class="card">
+                <h2>توقعات الثورة التونسية</h2>
+                <span>بقلم: زكريا ماني</span>
+            </a>
+
+            <a href="issue_15_noor_al_jabarin_past_thanks.html" class="card">
+                <h2>أملتُ على الأيام لتُنسيني</h2>
+                <span>بقلم: نور الجبارين</span>
+            </a>
+
+            <a href="issue_15_aya_mahmoud_speech.html" class="card">
+                <h2>كَلام</h2>
+                <span>بقلم: اية محمد</span>
+            </a>
+
+            <a href="issue_15_mohammed_babiker_problem_in_you.html" class="card">
+                <h2>متى تكون المشكلة فعلاً فيك؟</h2>
+                <span>بقلم: محمد بابكر</span>
+            </a>
+
+            <a href="issue_15_malik_al-sebini_rain_method.html" class="card">
+                <h2>منهج RAIN</h2>
+                <span>بقلم: مالك السبيني</span>
+            </a>
+
+            <a href="issue_15_odessa_the_absolute_truth.html" class="card">
+                <h2>الحقيقة المطلقة</h2>
+                <span>بقلم: أوديسا</span>
+            </a>
+
+            <a href="issue_15_mohammed_ali_the_third_day.html" class="card">
+                <h2>اليوم الثالث</h2>
+                <span>بقلم: محمد علي محمد</span>
+            </a>
+
+            <a href="issue_15_amna_mohammed_dead_wound.html" class="card">
+                <h2>جرح ميت</h2>
+                <span>بقلم: امنة محمد</span>
+            </a>
+
+            <a href="issue_15_abdullah_al_agha_fanaticism.html" class="card">
+                <h2>التعصب</h2>
+                <span>بقلم: عبدالله الاغا</span>
+            </a>
+
+            <a href="issue_15_enas_faraj_flight_2026.html" class="card">
+                <h2>رحلة 2026</h2>
+                <span>بقلم: ايناس فرج موحا</span>
+            </a>
+
+            <a href="issue_15_zakaria_zeus_fast_achievement.html" class="card">
+                <h2>الإنجاز السريع</h2>
+                <span>بقلم: زكريا زيوس</span>
             </a>
 
         </div>
     </div>
 
-    <footer class="footer-magazine">
-        <p>جميع الحقوق محفوظة &copy; 2024 - مجلة نبض</p>
-    </footer>
+    <div class="footer-nav">
+        <a href="../index.html" class="back-btn">العودة للرئيسية</a>
+    </div>
 
 </body>
 </html>
