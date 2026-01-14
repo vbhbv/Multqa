@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفتيش عنكِ | العدد 16</title>
+    <link rel="stylesheet" href="../style.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .poem-gold-wrapper {
+            max-width: 650px;
+            margin: 80px auto;
+            background: #ffffff;
+            padding: 70px 40px;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid #e2e2e2;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+            position: relative;
+        }
+        .poem-gold-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            bottom: 15px;
+            left: 15px;
+            right: 15px;
+            border: 1px solid #d4af37;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+        .jewel-icon {
+            font-size: 2rem;
+            color: #d4af37;
+            margin-bottom: 30px;
+        }
+        .poem-lines {
+            font-family: 'Aref Ruqaa', serif;
+            font-size: 1.8rem;
+            line-height: 2.2;
+            color: #2c3e50;
+        }
+        .poem-lines span {
+            display: block;
+            margin-bottom: 12px;
+        }
+        .highlight-line {
+            color: #b08d2b;
+            font-weight: bold;
+        }
+        .poem-footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+        }
+        .author-name {
+            font-family: 'Aref Ruqaa', serif;
+            font-size: 1.6rem;
+            color: #333;
+        }
+        .separator {
+            width: 40px;
+            height: 1px;
+            background: #d4af37;
+        }
+        @media (max-width: 600px) {
+            .poem-gold-wrapper { padding: 40px 20px; margin: 40px 15px; }
+            .poem-lines { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container nav-content">
+            <div class="logo">
+                <a href="../index.html">الـملتقى</a>
+            </div>
+            <a href="index.html" class="cta-button" style="padding: 10px 20px;"><i class="fas fa-list"></i> فهرس العدد 16</a> 
+        </div>
+    </header>
+    
+    <main class="container">
+        <div class="poem-gold-wrapper">
+            <div class="jewel-icon"><i class="fas fa-gem"></i></div>
+            
+            <div class="poem-lines">
+                <span>أركنُ كلَّ شيءٍ على جنب،</span>
+                <span>وأعودُ أفتّشُ عنكِ.</span>
+                <span class="highlight-line">أضعُ كلَّ قطعةٍ منكِ على حِدة،</span>
+                <span>كصائغٍ يفرزُ مجوهراتِه الثمينة.</span>
+                <br>
+                <span>ابتسامتُكِ هنا، ونظرتُكِ هناك،</span>
+                <span>عطفُكِ يملأ ناظري،</span>
+                <span>وسوادُ شعركِ قدري…</span>
+                <span class="highlight-line">وأنتِ في قلبي.</span>
+            </div>
+
+            <footer class="poem-footer">
+                <div class="separator"></div>
+                <div class="author-name">ـ عباس وسام</div>
+                <div class="separator"></div>
+            </footer>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-content"><p class="footer-logo">الملتقى</p></div>
+        <div class="footer-bottom"><p>&copy; 2026 مجلة الملتقى الثقافي للكتاب. جميع الحقوق محفوظة.</p></div>
+    </footer>
+</body>
+</html>
+
