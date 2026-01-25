@@ -1,3 +1,141 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>مجلة الملتقى الثقافي للكتاب</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@700&family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* ===================================================
+           تنسيق شريط تليجرام الإعلاني (CSS)
+           =================================================== */
+        #telegram-banner {
+            position: fixed;
+            bottom: -80px; 
+            left: 0;
+            width: 100%;
+            background-color: #0088CC; 
+            color: white;
+            padding: 15px 20px; 
+            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 5000;
+            display: flex;
+            justify-content: space-between; 
+            align-items: center;
+            transition: bottom 0.5s ease-out;
+            text-align: right; 
+            font-size: 1rem; 
+        }
+
+        #telegram-banner.show {
+            bottom: 0; 
+        }
+        
+        .banner-text-content {
+            display: flex;
+            align-items: center;
+            flex-grow: 1; 
+        }
+
+        .join-btn {
+            display: inline-block;
+            padding: 8px 15px; 
+            background-color: var(--color-secondary); 
+            color: var(--color-text-main);
+            font-weight: 700;
+            border-radius: 5px;
+            margin-right: 15px; 
+            transition: background-color 0.3s;
+            text-decoration: none; 
+            font-size: 0.95rem; 
+            white-space: nowrap; 
+        }
+        .join-btn:hover {
+            background-color: #FFD700;
+        }
+
+        #close-banner-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-left: 10px; 
+            flex-shrink: 0;
+        }
+        
+        @media (max-width: 650px) {
+            #telegram-banner {
+                flex-direction: column; 
+                text-align: center;
+                padding: 10px 10px 15px; 
+                align-items: stretch; 
+            }
+            .banner-text-content {
+                flex-direction: column;
+                align-items: center;
+                width: 100%; 
+            }
+            .join-btn {
+                margin-top: 5px;
+                margin-right: 0;
+                width: 90%; 
+            }
+            #close-banner-btn {
+                position: absolute; 
+                top: 5px;
+                left: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container nav-content">
+            <div class="logo">
+                <a href="index.html">مجلة الـملتقى</a>
+            </div>
+            
+            <div class="nav-actions">
+                <button id="dark-mode-toggle" class="nav-icon" aria-label="تبديل الوضع">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button id="hamburger-btn" class="nav-icon" aria-label="فتح القائمة">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <nav id="sidebar-menu" class="sidebar" role="navigation">
+        <button id="close-menu-btn" class="close-btn" aria-label="إغلاق القائمة">
+            <i class="fas fa-times"></i>
+        </button>
+        <a href="index.html"><i class="fas fa-home"></i> الصفحة الرئيسية</a>
+        <a href="archive.html"><i class="fas fa-feather-alt"></i> الأعداد والمقالات</a>
+        <a href="about.html"><i class="fas fa-user-friends"></i> فريق التحرير</a>
+    </nav>
+
+    <main class="container">
+        <section class="cultural-stage">
+            <div class="stage-content">
+                <h1>مـنـبـر الـفـكـر والنـقـد الـمـعـاصـر</h1>
+                <p>
+                    مساحة مستقلة لإثراء الوعي الثقافي. استكشف مقالات معمقة ودراسات أدبية وفكرية تضيء جوانب غير مطروقة من المشهد المعرفي العربي.
+                </p>
+                <a href="#article-showcase" class="cta-button">تصفح الأعداد <i class="fas fa-angle-left"></i></a>
+            </div>
+        </section>
+        
         <section class="article-showcase" id="article-showcase"> 
             <h2 class="section-title">📚 الأعداد المـنـشـورة</h2>
             
@@ -68,3 +206,47 @@
                 </article>
                 
             </div>
+            
+            <div class="cta-secondary">
+                <p>للاطلاع على جميع أعدادنا منذ التأسيس، تفضل بزيارة الأرشيف الكامل.</p>
+                <a href="archive.html" class="secondary-btn"><i class="fas fa-chevron-left"></i> الأرشيف الكامل للمجلة</a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <p class="footer-logo">الملتقى</p>
+            <div class="footer-links">
+                <a href="#">سياسة الخصوصية</a>
+                <a href="#">تواصل معنا</a>
+                <a href="#">انضم إلينا</a>
+            </div>
+            <div class="social-icons">
+                <a href="tg://resolve?domain=iiollr" target="_blank" aria-label="قناة تليجرام للمجلة"><i class="fab fa-telegram-plane"></i></a>
+                <a href="#" aria-label="تويتر/إكس"><i class="fab fa-x-twitter"></i></a>
+                <a href="#" aria-label="إنستغرام"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 مجلة الملتقى الثقافي للكتاب. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+    
+    <div id="telegram-banner">
+        <div class="banner-text-content">
+            <div style="margin-left: 10px;">
+                انضم إلى قناة مجلة الملتقى على تليجرام لتحصل على جديد المقالات فوراً!
+            </div>
+            <a href="tg://resolve?domain=iiollr" target="_blank" class="join-btn">
+                <i class="fab fa-telegram-plane"></i> اضغط للإنضمام إلى القناة
+            </a>
+        </div>
+        <button id="close-banner-btn" aria-label="إغلاق الإعلان"><i class="fas fa-times"></i></button>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
