@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مجلة الملتقى | العدد السابع عشر</title>
+    <link rel="stylesheet" href="../style.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .index-container {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .issue-header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 40px;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+        .issue-header h1 {
+            font-family: 'Aref Ruqaa', serif;
+            font-size: 3.5rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        .article-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-right: 5px solid #3498db;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.03);
+        }
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            background: #f8fbff;
+        }
+        .article-card h3 {
+            font-family: 'Cairo', sans-serif;
+            font-size: 1.4rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        .author-info {
+            font-family: 'Aref Ruqaa', serif;
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .author-info i { font-size: 0.9rem; color: #3498db; }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container nav-content">
+            <div class="logo">الـملتقى</div>
+            <nav>
+                <a href="../index.html">الرئيسية</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="index-container">
+        <header class="issue-header">
+            <h1>العدد السابع عشر</h1>
+            <p>نخبة من المقالات الفلسفية، الأدبية، والاجتماعية</p>
+        </header>
+
+        <div class="articles-grid">
+            
+            <a href="issue_17_ahmed_lujain_my_demand_in_love.html" class="article-card">
+                <h3>مطلبي في الحب</h3>
+                <div class="author-info"><i class="fas fa-pen"></i> أحمد لجين</div>
+            </a>
+
+            <a href="issue_17_alyaa_alsalami_waiting_for_joy.html" class="article-card">
+                <h3>أنا علياء (انتظار الفرح)</h3>
+                <div class="author-info"><i class="fas fa-pen"></i> علياء السلامي</div>
+            </a>
+
+            <a href="issue_17_banin_haidar_self_knowledge.html" class="article-card">
+                <h3>معرفة النفس</h3>
+                <div class="author-info"><i class="fas fa-pen"></i> بنين حيدر</div>
+            </a>
+
+            <a href="issue_17_deema_sami_the_indescribable.html" class="article-card">
+                <h3>وصف عصيّ</h3>
+                <div class="author-info"><i class="fas fa-pen"></i> ديمة سامي</div>
+            </a>
+
+            <a href="issue_17_emily_faith_and_action.html" class="article-card">
+                <h3>الإيمان جسر لا سجن</h3>
+                <div class="author-info"><i class="fas fa-pen"></i> ايملي</div>
+            </a>
+
+            <a href="issue_17_enas_faraj_clinical_philosophy.html" class="article-card">
+                <h3>بين أروقة الأمل والألم</h3>
+                <div class="author-info"><i class="fas fa-pen"></i> إيناس فرج موحا</div>
+            </a>
+
+            <a href="issue_17_hamad_al_attar_philosophy_of_love.html" class="article-card">
+                <h3>فلسفة الحب والجاذبية</h3>
+                <div class="author-info"><i class="fas fa-pen"></i> حمد العطار</div>
+            </a>
+
+            <a href="issue_17_jinan_al_kawn_between_mind_and_heart.html" class="article-card">
+                <h3>بين العقل والقلب</h3>
+                <div class="author-info"><i class="fas fa-pen"></i> جنان الكون</div>
+            </a>
+
+            <a href="issue_17_mohammed_babiker_word_holes.html" class="article-card">
+                <h3>ثقوب الكلمات</h3>
+                <div class="author-info"><i class="fas fa-pen"></i> محمد بابكر عثمان</div>
+            </a>
+
+            <a href="issue_17_noor_al_jabarin_alphabet_of_waves.html" class="article-card">
+                <h3>أبجدية الموج والغيوم</h3>
+                <div class="author-info"><i class="fas fa-pen"></i> نور الجبارين</div>
+            </a>
+
+            <a href="issue_17_sarah_ahmed_dreams_are_life.html" class="article-card">
+                <h3>إن لم تكن أحلامنا حياة</h3>
+                <div class="author-info"><i class="fas fa-pen"></i> ساره أحمد</div>
+            </a>
+
+            <a href="issue_17_writer_rooh_the_lost_ego.html" class="article-card">
+                <h3>الأنا تائهة</h3>
+                <div class="author-info"><i class="fas fa-pen"></i> روح</div>
+            </a>
+
+            <a href="issue_17_zeus_environment_is_life.html" class="article-card">
+                <h3>بيئتنا حياتنا</h3>
+                <div class="author-info"><i class="fas fa-pen"></i> زيوس</div>
+            </a>
+
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <p>&copy; 2026 مجلة الملتقى الثقافي. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
